@@ -19,6 +19,8 @@ class _LoginScreenState extends State<LoginScreen> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+                  Image.asset("assets/img/sign_in.png",width:150,height: 150,),
+                  SizedBox(height: 5,),
                   Text(
                     "Login to Your Account",
                     style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold,color: Colors.blue.shade900),
@@ -63,7 +65,9 @@ class _LoginScreenState extends State<LoginScreen> {
                   SizedBox(height: 20,),
                   SizedBox(
                     width: double.infinity,
-                      child: ElevatedButton(onPressed: () {}, child: Text("Sign in"),)),
+                      child: ElevatedButton(onPressed: () {
+                        Navigator.pushReplacementNamed(context, 'home');
+                      }, child: Text("Sign in"),),),
                   SizedBox(height: 20,),
                   Text(
                     "or continue with",
