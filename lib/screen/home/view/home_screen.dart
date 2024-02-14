@@ -54,14 +54,14 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                           Text(
                             "Good Morning",
-                            style: TextStyle(fontSize: 20),
+                            style: TextStyle(fontSize: 20,color: Colors.white),
                           ),
                         ],
                       ),
                       Spacer(),
                       IconButton(
                           onPressed: () {},
-                          icon: Icon(Icons.notifications_rounded))
+                          icon: Icon(Icons.notifications_rounded,color: Colors.white,))
                     ],
                   ),
                   SizedBox(
