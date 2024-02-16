@@ -70,7 +70,13 @@ class _HomeScreenState extends State<HomeScreen> {
                   SearchBar(
                       leading: Icon(Icons.search),
                       hintText: "Search",
-                      trailing: [Icon(Icons.tune)])
+                      trailing: [Icon(Icons.tune)]),
+                  SizedBox(height: 10,),
+                  Container(
+                    width: MediaQuery.sizeOf(context).width,
+                    height: MediaQuery.sizeOf(context).height*0.40,
+                    color: Colors.red,
+                  )
                 ],
               ),
             ),
