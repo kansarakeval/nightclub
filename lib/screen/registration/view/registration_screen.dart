@@ -58,6 +58,8 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+                  Image.asset("assets/img/sing_up.png",width:150,height: 150,),
+                  SizedBox(height: 5,),
                   Text(
                     "Create New Account",
                     style: TextStyle(
