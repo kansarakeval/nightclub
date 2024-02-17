@@ -54,14 +54,17 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                           Text(
                             "Good Morning",
-                            style: TextStyle(fontSize: 20,color: Colors.white),
+                            style: TextStyle(fontSize: 20, color: Colors.white),
                           ),
                         ],
                       ),
                       Spacer(),
                       IconButton(
                           onPressed: () {},
-                          icon: Icon(Icons.notifications_rounded,color: Colors.white,))
+                          icon: Icon(
+                            Icons.notifications_rounded,
+                            color: Colors.white,
+                          ))
                     ],
                   ),
                   SizedBox(
@@ -71,11 +74,57 @@ class _HomeScreenState extends State<HomeScreen> {
                       leading: Icon(Icons.search),
                       hintText: "Search",
                       trailing: [Icon(Icons.tune)]),
-                  SizedBox(height: 10,),
+                  SizedBox(
+                    height: 10,
+                  ),
                   Container(
-                    width: MediaQuery.sizeOf(context).width,
-                    height: MediaQuery.sizeOf(context).height*0.40,
-                    color: Colors.red,
+                    width: MediaQuery.sizeOf(context).width * 0.90,
+                    height: MediaQuery.sizeOf(context).height * 0.50,
+                    padding: EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                        color: Colors.red,
+                        borderRadius: BorderRadius.circular(5)),
+                    child: Column(
+                      children: [
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(10),
+                          child: Stack(
+                            alignment: Alignment.bottomCenter,
+                            children: [
+                              Image.asset(
+                                "assets/img/singer1.jpg",
+                                height: 230,
+                              ),
+                              Container(
+                                height: 44,
+                                width: MediaQuery.sizeOf(context).width*0.84,
+                                padding: const EdgeInsets.only(left: 20),
+                                decoration: BoxDecoration(
+                                    color: Colors.blue.withOpacity(0.2),
+                                    borderRadius: const BorderRadius.only(
+                                        bottomRight: Radius.circular(10),
+                                        bottomLeft: Radius.circular(10))),
+                                child: const Row(
+                                  children: [
+                                    Icon(Icons.thumb_up_alt_outlined,color: Colors.white,size: 17,),
+                                    SizedBox(width: 10,),
+                                    Text("231",style: TextStyle(color: Colors.white,fontSize: 13),),
+                                    SizedBox(width: 20,),
+                                    Icon(Icons.comment_outlined,color: Colors.white,size: 17,),
+                                    SizedBox(width: 10,),
+                                    Text("441",style: TextStyle(color: Colors.white,fontSize: 13),),
+                                    SizedBox(width: 20,),
+                                    Icon(Icons.share_outlined,color: Colors.white,size: 17,),
+                                    SizedBox(width: 10,),
+                                    Text("631",style: TextStyle(color: Colors.white,fontSize: 13),),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
                   )
                 ],
               ),
