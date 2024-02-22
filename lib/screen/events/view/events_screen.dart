@@ -52,7 +52,7 @@ class _EventsScreenState extends State<EventsScreen> {
                     //first
                     Container(
                       width: MediaQuery.sizeOf(context).width * 0.90,
-                      height: MediaQuery.sizeOf(context).height * 0.60,
+                      height: MediaQuery.sizeOf(context).height * 0.75,
                       padding: const EdgeInsets.all(10),
                       decoration: BoxDecoration(
                           color: Colors.white,
@@ -76,6 +76,7 @@ class _EventsScreenState extends State<EventsScreen> {
                                   Image.asset(
                                     "assets/img/singer1.jpg",
                                     height: 230,
+                                    fit: BoxFit.cover,
                                   ),
                                   Container(
                                     height: 44,
@@ -247,7 +248,7 @@ class _EventsScreenState extends State<EventsScreen> {
                           ),
                           const Text(
                             "Someone who is not witly or sharp, but rather,\n they are ignorant unintelligent, or senseless.",
-                            style: TextStyle(fontSize: 16),
+                            style: TextStyle(fontSize: 15),
                           ),
                           const SizedBox(
                             height: 10,
@@ -298,7 +299,7 @@ class _EventsScreenState extends State<EventsScreen> {
                     //second
                     Container(
                       width: MediaQuery.sizeOf(context).width * 0.90,
-                      height: MediaQuery.sizeOf(context).height * 0.60,
+                      height: MediaQuery.sizeOf(context).height * 0.75,
                       padding: const EdgeInsets.all(10),
                       decoration: BoxDecoration(
                           color: Colors.white,
@@ -322,6 +323,7 @@ class _EventsScreenState extends State<EventsScreen> {
                                   Image.asset(
                                     "assets/img/fun.jpg",
                                     height: 230,
+                                    fit: BoxFit.cover,
                                   ),
                                   Container(
                                     height: 44,
@@ -493,7 +495,7 @@ class _EventsScreenState extends State<EventsScreen> {
                           ),
                           const Text(
                             "Someone who is not witly or sharp, but rather,\n they are ignorant unintelligent, or senseless.",
-                            style: TextStyle(fontSize: 16),
+                            style: TextStyle(fontSize: 15),
                           ),
                           const SizedBox(
                             height: 10,
@@ -544,7 +546,7 @@ class _EventsScreenState extends State<EventsScreen> {
                     //third
                     Container(
                       width: MediaQuery.sizeOf(context).width * 0.90,
-                      height: MediaQuery.sizeOf(context).height * 0.60,
+                      height: MediaQuery.sizeOf(context).height * 0.75,
                       padding: const EdgeInsets.all(10),
                       decoration: BoxDecoration(
                           color: Colors.white,
@@ -568,11 +570,11 @@ class _EventsScreenState extends State<EventsScreen> {
                                   Image.asset(
                                     "assets/img/build.jpg",
                                     height: 230,
+                                    fit: BoxFit.cover,
                                   ),
                                   Container(
                                     height: 44,
-                                    width:
-                                    MediaQuery.sizeOf(context).width * 0.84,
+                                    width: MediaQuery.sizeOf(context).width * 0.84,
                                     padding: const EdgeInsets.only(left: 20),
                                     decoration: BoxDecoration(
                                       color: Colors.blue.withOpacity(0.2),
@@ -739,7 +741,7 @@ class _EventsScreenState extends State<EventsScreen> {
                           ),
                           const Text(
                             "Someone who is not witly or sharp, but rather,\n they are ignorant unintelligent, or senseless.",
-                            style: TextStyle(fontSize: 16),
+                            style: TextStyle(fontSize: 15),
                           ),
                           const SizedBox(
                             height: 10,
@@ -787,267 +789,7 @@ class _EventsScreenState extends State<EventsScreen> {
                       height: 10,
                     ),
 
-                    //theme
-                    Container(
-                      width: MediaQuery.sizeOf(context).width * 0.90,
-                      height: MediaQuery.sizeOf(context).height * 0.20,
-                      padding: const EdgeInsets.all(10),
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          boxShadow: const [
-                            BoxShadow(
-                              color: Colors.grey,
-                              spreadRadius: 0.2,
-                              blurRadius: 2,
-                            )
-                          ],
-                          borderRadius: BorderRadius.circular(5)),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          const Text("Light or Dark mode",
-                              style: TextStyle(
-                                  fontSize: 25, fontWeight: FontWeight.bold)),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          const Text(
-                            "This app comes can be used in light and dark\n mode as per your requirements",
-                            style: TextStyle(
-                              fontSize: 15,
-                            ),
-                            textAlign: TextAlign.center,
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              ElevatedButton(
-                                onPressed: () {},
-                                style: ButtonStyle(
-                                  backgroundColor: MaterialStateProperty.all(
-                                      Colors.blue.shade200),
-                                ),
-                                child: const Text(
-                                  "Light Mode",
-                                  style: TextStyle(color: Colors.white),
-                                ),
-                              ),
-                              const SizedBox(
-                                width: 10,
-                              ),
-                              ElevatedButton(
-                                onPressed: () {},
-                                style: ButtonStyle(
-                                  backgroundColor: MaterialStateProperty.all(
-                                      Colors.blue.shade600),
-                                ),
-                                child: const Text(
-                                  "Dark Mode",
-                                  style: TextStyle(color: Colors.white),
-                                ),
-                              ),
-                            ],
-                          )
-                        ],
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
 
-                    //people
-                    Container(
-                      width: MediaQuery.sizeOf(context).width * 0.90,
-                      height: MediaQuery.sizeOf(context).height * 0.40,
-                      padding: const EdgeInsets.all(10),
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          boxShadow: const [
-                            BoxShadow(
-                              color: Colors.grey,
-                              spreadRadius: 0.2,
-                              blurRadius: 2,
-                            )
-                          ],
-                          borderRadius: BorderRadius.circular(5)),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          const Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text("People",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 25),),
-                              Text("View All",style: TextStyle(fontSize: 15),)
-                            ],
-                          ),
-                          const SizedBox(height: 10,),
-                          SingleChildScrollView(scrollDirection: Axis.horizontal,
-                            child: Row(
-                              children: [
-                                Column(
-                                  children: [
-                                    ClipRRect( borderRadius: BorderRadius.circular(10),child: Image.asset("assets/singerimg/3.png",height: 110,)),
-                                    const SizedBox(height: 10,),
-                                    const Text("Juliet Wykes",style: TextStyle(fontSize: 18),),
-                                    const SizedBox(height: 2,),
-                                    const Text("senior Designer",style: TextStyle(fontSize: 15),),
-                                    const SizedBox(height: 10,),
-                                    Row(
-                                      children: [
-                                        Icon(
-                                          Icons.star,
-                                          color: Colors.blue.shade800,
-                                          size: 18,
-                                        ),
-                                        Icon(
-                                          Icons.star,
-                                          color: Colors.blue.shade800,
-                                          size: 18,
-                                        ),
-                                        Icon(
-                                          Icons.star,
-                                          color: Colors.blue.shade800,
-                                          size: 18,
-                                        ),
-                                        Icon(
-                                          Icons.star,
-                                          color: Colors.blue.shade800,
-                                          size: 18,
-                                        ),
-                                        Icon(
-                                          Icons.star_half,
-                                          color: Colors.blue.shade800,
-                                          size: 18,
-                                        ),
-                                      ],
-                                    ),
-                                    const SizedBox(height: 10,),
-                                    ElevatedButton(
-                                      onPressed: () {},
-                                      style: ButtonStyle(
-                                        backgroundColor: MaterialStateProperty.all(
-                                            Colors.blue.shade600),
-                                      ),
-                                      child: const Text(
-                                        "Follow",
-                                        style: TextStyle(color: Colors.white),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                SizedBox(width: 20,),
-                                Column(
-                                  children: [
-                                    ClipRRect( borderRadius: BorderRadius.circular(10),child: Image.asset("assets/singerimg/4.png",height: 110,)),
-                                    const SizedBox(height: 10,),
-                                    const Text("Dag Curner",style: TextStyle(fontSize: 18),),
-                                    const SizedBox(height: 2,),
-                                    const Text("Manager",style: TextStyle(fontSize: 15),),
-                                    const SizedBox(height: 10,),
-                                    Row(
-                                      children: [
-                                        Icon(
-                                          Icons.star,
-                                          color: Colors.blue.shade800,
-                                          size: 18,
-                                        ),
-                                        Icon(
-                                          Icons.star,
-                                          color: Colors.blue.shade800,
-                                          size: 18,
-                                        ),
-                                        Icon(
-                                          Icons.star,
-                                          color: Colors.blue.shade800,
-                                          size: 18,
-                                        ),
-                                        Icon(
-                                          Icons.star,
-                                          color: Colors.blue.shade800,
-                                          size: 18,
-                                        ),
-                                        Icon(
-                                          Icons.star_half,
-                                          color: Colors.blue.shade800,
-                                          size: 18,
-                                        ),
-                                      ],
-                                    ),
-                                    const SizedBox(height: 10,),
-                                    ElevatedButton(
-                                      onPressed: () {},
-                                      style: ButtonStyle(
-                                        backgroundColor: MaterialStateProperty.all(
-                                            Colors.blue.shade600),
-                                      ),
-                                      child: const Text(
-                                        "Follow",
-                                        style: TextStyle(color: Colors.white),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                SizedBox(width: 20,),
-                                Column(
-                                  children: [
-                                    ClipRRect( borderRadius: BorderRadius.circular(10),child: Image.asset("assets/singerimg/9.png",height: 110,)),
-                                    const SizedBox(height: 10,),
-                                    const Text("Grove stark",style: TextStyle(fontSize: 18),),
-                                    const SizedBox(height: 2,),
-                                    const Text("Ux/Manager",style: TextStyle(fontSize: 15),),
-                                    const SizedBox(height: 10,),
-                                    Row(
-                                      children: [
-                                        Icon(
-                                          Icons.star,
-                                          color: Colors.blue.shade800,
-                                          size: 18,
-                                        ),
-                                        Icon(
-                                          Icons.star,
-                                          color: Colors.blue.shade800,
-                                          size: 18,
-                                        ),
-                                        Icon(
-                                          Icons.star,
-                                          color: Colors.blue.shade800,
-                                          size: 18,
-                                        ),
-                                        Icon(
-                                          Icons.star,
-                                          color: Colors.blue.shade800,
-                                          size: 18,
-                                        ),
-                                        Icon(
-                                          Icons.star_half,
-                                          color: Colors.blue.shade800,
-                                          size: 18,
-                                        ),
-                                      ],
-                                    ),
-                                    const SizedBox(height: 10,),
-                                    ElevatedButton(
-                                      onPressed: () {},
-                                      style: ButtonStyle(
-                                        backgroundColor: MaterialStateProperty.all(
-                                            Colors.blue.shade600),
-                                      ),
-                                      child: const Text(
-                                        "Follow",
-                                        style: TextStyle(color: Colors.white),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
 
                   ],
                 ),

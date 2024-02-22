@@ -88,7 +88,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     //first
                     Container(
                       width: MediaQuery.sizeOf(context).width * 0.90,
-                      height: MediaQuery.sizeOf(context).height * 0.60,
+                      height: MediaQuery.sizeOf(context).height*0.75,
                       padding: const EdgeInsets.all(10),
                       decoration: BoxDecoration(
                           color: Colors.white,
@@ -112,6 +112,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   Image.asset(
                                     "assets/img/singer1.jpg",
                                     height: 230,
+                                    fit: BoxFit.cover,
                                   ),
                                   Container(
                                     height: 44,
@@ -283,7 +284,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                           const Text(
                             "Someone who is not witly or sharp, but rather,\n they are ignorant unintelligent, or senseless.",
-                            style: TextStyle(fontSize: 16),
+                            style: TextStyle(fontSize: 15),
                           ),
                           const SizedBox(
                             height: 10,
@@ -334,7 +335,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     //second
                     Container(
                       width: MediaQuery.sizeOf(context).width * 0.90,
-                      height: MediaQuery.sizeOf(context).height * 0.60,
+                      height: MediaQuery.sizeOf(context).height * 0.75,
                       padding: const EdgeInsets.all(10),
                       decoration: BoxDecoration(
                           color: Colors.white,
@@ -358,6 +359,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   Image.asset(
                                     "assets/img/fun.jpg",
                                     height: 230,
+                                    fit: BoxFit.cover,
                                   ),
                                   Container(
                                     height: 44,
@@ -580,7 +582,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     //third
                     Container(
                       width: MediaQuery.sizeOf(context).width * 0.90,
-                      height: MediaQuery.sizeOf(context).height * 0.60,
+                      height: MediaQuery.sizeOf(context).height * 0.75,
                       padding: const EdgeInsets.all(10),
                       decoration: BoxDecoration(
                           color: Colors.white,
@@ -604,6 +606,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   Image.asset(
                                     "assets/img/build.jpg",
                                     height: 230,
+                                    fit: BoxFit.cover,
                                   ),
                                   Container(
                                     height: 44,
@@ -826,7 +829,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     //theme
                     Container(
                       width: MediaQuery.sizeOf(context).width * 0.90,
-                      height: MediaQuery.sizeOf(context).height * 0.20,
+                      height: MediaQuery.sizeOf(context).height * 0.28,
                       padding: const EdgeInsets.all(10),
                       decoration: BoxDecoration(
                           color: Colors.white,
@@ -897,7 +900,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     //people
                     Container(
                       width: MediaQuery.sizeOf(context).width * 0.90,
-                      height: MediaQuery.sizeOf(context).height * 0.40,
+                      height: MediaQuery.sizeOf(context).height * 0.45,
                       padding: const EdgeInsets.all(10),
                       decoration: BoxDecoration(
                           color: Colors.white,
