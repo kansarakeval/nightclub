@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nightclub/screen/events/view/events_screen.dart';
 import 'package:nightclub/screen/forget/view/forgetpassword_screen.dart';
 import 'package:nightclub/screen/home/view/home_screen.dart';
 import 'package:nightclub/screen/login/view/login_Screen.dart';
@@ -13,5 +14,6 @@ Map<String, WidgetBuilder> app_Routes = {
   'forget':(context) => const ForgetpasswordScreen(),
   'home':(context) => const HomeScreen(),
   'setting':(context) => const SettingScreeen(),
+  'event': (context) => const EventsScreen(),
 
 };
