@@ -92,7 +92,9 @@ class _SettingScreeenState extends State<SettingScreeen> {
                       style: TextStyle(fontSize: 18),
                     ),
                     trailing: IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushNamed(context, 'interests');
+                      },
                       icon: const Icon(Icons.navigate_next),
                     ),
                   ),
@@ -114,7 +116,9 @@ class _SettingScreeenState extends State<SettingScreeen> {
                       style: TextStyle(fontSize: 18),
                     ),
                     trailing: IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushNamed(context, 'location');
+                      },
                       icon: const Icon(Icons.navigate_next),
                     ),
                   ),

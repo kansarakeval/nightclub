@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:nightclub/screen/home/provider/home_provider.dart';
+import 'package:nightclub/widget/home_event_widget.dart';
+import 'package:nightclub/widget/people_widget.dart';
+import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -8,8 +13,13 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  HomeProvider? providerr;
+  HomeProvider? providerw;
+
   @override
   Widget build(BuildContext context) {
+    providerr = context.read<HomeProvider>();
+    providerw = context.watch<HomeProvider>();
     return SafeArea(
       child: Scaffold(
         body: Stack(
@@ -51,11 +61,13 @@ class _HomeScreenState extends State<HomeScreen> {
                           children: [
                             Text(
                               "keval...!",
-                              style: TextStyle(fontSize: 15, color: Colors.white),
+                              style:
+                                  TextStyle(fontSize: 15, color: Colors.white),
                             ),
                             Text(
                               "Good Morning",
-                              style: TextStyle(fontSize: 20, color: Colors.white),
+                              style:
+                                  TextStyle(fontSize: 20, color: Colors.white),
                             ),
                           ],
                         ),
@@ -86,741 +98,34 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
 
                     //first
-                    Container(
-                      width: MediaQuery.sizeOf(context).width * 0.90,
-                      height: MediaQuery.sizeOf(context).height*0.75,
-                      padding: const EdgeInsets.all(10),
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          boxShadow: const [
-                            BoxShadow(
-                              color: Colors.grey,
-                              spreadRadius: 0.2,
-                              blurRadius: 2,
-                            )
-                          ],
-                          borderRadius: BorderRadius.circular(5)),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Center(
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(10),
-                              child: Stack(
-                                alignment: Alignment.bottomCenter,
-                                children: [
-                                  Image.asset(
-                                    "assets/img/singer1.jpg",
-                                    height: 230,
-                                    fit: BoxFit.cover,
-                                  ),
-                                  Container(
-                                    height: 44,
-                                    width:
-                                        MediaQuery.sizeOf(context).width * 0.84,
-                                    padding: const EdgeInsets.only(left: 20),
-                                    decoration: BoxDecoration(
-                                      color: Colors.blue.withOpacity(0.2),
-                                      borderRadius: const BorderRadius.only(
-                                        bottomRight: Radius.circular(10),
-                                        bottomLeft: Radius.circular(10),
-                                      ),
-                                    ),
-                                    child: const Row(
-                                      children: [
-                                        Icon(
-                                          Icons.thumb_up_alt_outlined,
-                                          color: Colors.white,
-                                          size: 17,
-                                        ),
-                                        SizedBox(
-                                          width: 10,
-                                        ),
-                                        Text(
-                                          "231",
-                                          style: TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 13),
-                                        ),
-                                        SizedBox(
-                                          width: 20,
-                                        ),
-                                        Icon(
-                                          Icons.comment_outlined,
-                                          color: Colors.white,
-                                          size: 17,
-                                        ),
-                                        SizedBox(
-                                          width: 10,
-                                        ),
-                                        Text(
-                                          "441",
-                                          style: TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 13),
-                                        ),
-                                        SizedBox(
-                                          width: 20,
-                                        ),
-                                        Icon(
-                                          Icons.share_outlined,
-                                          color: Colors.white,
-                                          size: 17,
-                                        ),
-                                        SizedBox(
-                                          width: 10,
-                                        ),
-                                        Text(
-                                          "631",
-                                          style: TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 13),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          const Text(
-                            "Lifestyle trends",
-                            style: TextStyle(
-                                fontSize: 25, fontWeight: FontWeight.w500),
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          Row(
-                            children: [
-                              const Text(
-                                "New York",
-                              ),
-                              const Spacer(),
-                              Icon(
-                                Icons.star,
-                                color: Colors.blue.shade800,
-                                size: 18,
-                              ),
-                              Icon(
-                                Icons.star,
-                                color: Colors.blue.shade800,
-                                size: 18,
-                              ),
-                              Icon(
-                                Icons.star,
-                                color: Colors.blue.shade800,
-                                size: 18,
-                              ),
-                              Icon(
-                                Icons.star,
-                                color: Colors.blue.shade800,
-                                size: 18,
-                              ),
-                              Icon(
-                                Icons.star_half,
-                                color: Colors.blue.shade800,
-                                size: 18,
-                              ),
-                            ],
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          Row(
-                            children: [
-                              ClipRRect(
-                                  borderRadius: BorderRadius.circular(10),
-                                  child: Image.asset(
-                                    "assets/singerimg/1.png",
-                                    height: 50,
-                                    fit: BoxFit.cover,
-                                  )),
-                              const SizedBox(
-                                width: 10,
-                              ),
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(10),
-                                child: Image.asset(
-                                  "assets/singerimg/2.png",
-                                  height: 50,
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                              const SizedBox(
-                                width: 10,
-                              ),
-                              ClipRRect(
-                                  borderRadius: BorderRadius.circular(10),
-                                  child: Image.asset(
-                                    "assets/singerimg/3.png",
-                                    height: 50,
-                                    fit: BoxFit.cover,
-                                  )),
-                              const SizedBox(
-                                width: 10,
-                              ),
-                              ClipRRect(
-                                  borderRadius: BorderRadius.circular(10),
-                                  child: Image.asset(
-                                    "assets/singerimg/4.png",
-                                    height: 50,
-                                    fit: BoxFit.cover,
-                                  )),
-                              const SizedBox(
-                                width: 10,
-                              ),
-                              const Text(
-                                "+8 more",
-                                style: TextStyle(fontSize: 15),
-                              )
-                            ],
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          const Text(
-                            "Someone who is not witly or sharp, but rather,\n they are ignorant unintelligent, or senseless.",
-                            style: TextStyle(fontSize: 15),
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          Row(
-                            children: [
-                              ElevatedButton(
-                                onPressed: () {},
-                                style: ButtonStyle(
-                                  backgroundColor: MaterialStateProperty.all(
-                                      Colors.blue.shade200),
-                                ),
-                                child: const Text(
-                                  "Book",
-                                  style: TextStyle(color: Colors.white),
-                                ),
-                              ),
-                              const SizedBox(
-                                width: 10,
-                              ),
-                              ElevatedButton(
-                                onPressed: () {},
-                                style: ButtonStyle(
-                                  backgroundColor: MaterialStateProperty.all(
-                                      Colors.blue.shade600),
-                                ),
-                                child: const Text(
-                                  "Invite",
-                                  style: TextStyle(color: Colors.white),
-                                ),
-                              ),
-                              const SizedBox(
-                                width: 10,
-                              ),
-                              const Text(
-                                "View Gallery",
-                                style: TextStyle(fontSize: 15),
-                              )
-                            ],
-                          )
-                        ],
-                      ),
+                    HomeEventContainer(
+                      img: "assets/img/singer1.jpg",
+                      title: "Lifestyle trends",
+                      text: "New York",
+                      des:
+                          "Someone who is not witly or sharp, but rather,\n they are ignorant unintelligent, or senseless.",
                     ),
                     const SizedBox(
                       height: 10,
                     ),
 
                     //second
-                    Container(
-                      width: MediaQuery.sizeOf(context).width * 0.90,
-                      height: MediaQuery.sizeOf(context).height * 0.75,
-                      padding: const EdgeInsets.all(10),
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          boxShadow: const [
-                            BoxShadow(
-                              color: Colors.grey,
-                              spreadRadius: 0.2,
-                              blurRadius: 2,
-                            )
-                          ],
-                          borderRadius: BorderRadius.circular(5)),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Center(
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(10),
-                              child: Stack(
-                                alignment: Alignment.bottomCenter,
-                                children: [
-                                  Image.asset(
-                                    "assets/img/fun.jpg",
-                                    height: 230,
-                                    fit: BoxFit.cover,
-                                  ),
-                                  Container(
-                                    height: 44,
-                                    width:
-                                        MediaQuery.sizeOf(context).width * 0.84,
-                                    padding: const EdgeInsets.only(left: 20),
-                                    decoration: BoxDecoration(
-                                      color: Colors.blue.withOpacity(0.2),
-                                      borderRadius: const BorderRadius.only(
-                                        bottomRight: Radius.circular(10),
-                                        bottomLeft: Radius.circular(10),
-                                      ),
-                                    ),
-                                    child: const Row(
-                                      children: [
-                                        Icon(
-                                          Icons.thumb_up_alt_outlined,
-                                          color: Colors.white,
-                                          size: 17,
-                                        ),
-                                        SizedBox(
-                                          width: 10,
-                                        ),
-                                        Text(
-                                          "231",
-                                          style: TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 13),
-                                        ),
-                                        SizedBox(
-                                          width: 20,
-                                        ),
-                                        Icon(
-                                          Icons.comment_outlined,
-                                          color: Colors.white,
-                                          size: 17,
-                                        ),
-                                        SizedBox(
-                                          width: 10,
-                                        ),
-                                        Text(
-                                          "441",
-                                          style: TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 13),
-                                        ),
-                                        SizedBox(
-                                          width: 20,
-                                        ),
-                                        Icon(
-                                          Icons.share_outlined,
-                                          color: Colors.white,
-                                          size: 17,
-                                        ),
-                                        SizedBox(
-                                          width: 10,
-                                        ),
-                                        Text(
-                                          "631",
-                                          style: TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 13),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          const Text(
-                            "Fun and Comedy",
-                            style: TextStyle(
-                                fontSize: 25, fontWeight: FontWeight.w500),
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          Row(
-                            children: [
-                              const Text(
-                                "New York",
-                              ),
-                              const Spacer(),
-                              Icon(
-                                Icons.star,
-                                color: Colors.blue.shade800,
-                                size: 18,
-                              ),
-                              Icon(
-                                Icons.star,
-                                color: Colors.blue.shade800,
-                                size: 18,
-                              ),
-                              Icon(
-                                Icons.star,
-                                color: Colors.blue.shade800,
-                                size: 18,
-                              ),
-                              Icon(
-                                Icons.star,
-                                color: Colors.blue.shade800,
-                                size: 18,
-                              ),
-                              Icon(
-                                Icons.star_half,
-                                color: Colors.blue.shade800,
-                                size: 18,
-                              ),
-                            ],
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          Row(
-                            children: [
-                              ClipRRect(
-                                  borderRadius: BorderRadius.circular(10),
-                                  child: Image.asset(
-                                    "assets/singerimg/1.png",
-                                    height: 50,
-                                    fit: BoxFit.cover,
-                                  )),
-                              const SizedBox(
-                                width: 10,
-                              ),
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(10),
-                                child: Image.asset(
-                                  "assets/singerimg/2.png",
-                                  height: 50,
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                              const SizedBox(
-                                width: 10,
-                              ),
-                              ClipRRect(
-                                  borderRadius: BorderRadius.circular(10),
-                                  child: Image.asset(
-                                    "assets/singerimg/3.png",
-                                    height: 50,
-                                    fit: BoxFit.cover,
-                                  )),
-                              const SizedBox(
-                                width: 10,
-                              ),
-                              ClipRRect(
-                                  borderRadius: BorderRadius.circular(10),
-                                  child: Image.asset(
-                                    "assets/singerimg/4.png",
-                                    height: 50,
-                                    fit: BoxFit.cover,
-                                  )),
-                              const SizedBox(
-                                width: 10,
-                              ),
-                              const Text(
-                                "+8 more",
-                                style: TextStyle(fontSize: 15),
-                              )
-                            ],
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          const Text(
-                            "Someone who is not witly or sharp, but rather,\n they are ignorant unintelligent, or senseless.",
-                            style: TextStyle(fontSize: 16),
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          Row(
-                            children: [
-                              ElevatedButton(
-                                onPressed: () {},
-                                style: ButtonStyle(
-                                  backgroundColor: MaterialStateProperty.all(
-                                      Colors.blue.shade200),
-                                ),
-                                child: const Text(
-                                  "Book",
-                                  style: TextStyle(color: Colors.white),
-                                ),
-                              ),
-                              const SizedBox(
-                                width: 10,
-                              ),
-                              ElevatedButton(
-                                onPressed: () {},
-                                style: ButtonStyle(
-                                  backgroundColor: MaterialStateProperty.all(
-                                      Colors.blue.shade600),
-                                ),
-                                child: const Text(
-                                  "Invite",
-                                  style: TextStyle(color: Colors.white),
-                                ),
-                              ),
-                              const SizedBox(
-                                width: 10,
-                              ),
-                              const Text(
-                                "View Gallery",
-                                style: TextStyle(fontSize: 15),
-                              )
-                            ],
-                          )
-                        ],
-                      ),
+                    HomeEventContainer(
+                      img: "assets/img/fun.jpg",
+                      title: "Fun and Comedy",
+                      text: "London",
+                      des:
+                          "To greatly frustrate someone. To drive\n someone crazy, insane, bonkers,or bananas.",
                     ),
-                    const SizedBox(
-                      height: 10,
-                    ),
+                    const SizedBox(height: 10),
 
                     //third
-                    Container(
-                      width: MediaQuery.sizeOf(context).width * 0.90,
-                      height: MediaQuery.sizeOf(context).height * 0.75,
-                      padding: const EdgeInsets.all(10),
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          boxShadow: const [
-                            BoxShadow(
-                              color: Colors.grey,
-                              spreadRadius: 0.2,
-                              blurRadius: 2,
-                            )
-                          ],
-                          borderRadius: BorderRadius.circular(5)),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Center(
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(10),
-                              child: Stack(
-                                alignment: Alignment.bottomCenter,
-                                children: [
-                                  Image.asset(
-                                    "assets/img/build.jpg",
-                                    height: 230,
-                                    fit: BoxFit.cover,
-                                  ),
-                                  Container(
-                                    height: 44,
-                                    width:
-                                        MediaQuery.sizeOf(context).width * 0.84,
-                                    padding: const EdgeInsets.only(left: 20),
-                                    decoration: BoxDecoration(
-                                      color: Colors.blue.withOpacity(0.2),
-                                      borderRadius: const BorderRadius.only(
-                                        bottomRight: Radius.circular(10),
-                                        bottomLeft: Radius.circular(10),
-                                      ),
-                                    ),
-                                    child: const Row(
-                                      children: [
-                                        Icon(
-                                          Icons.thumb_up_alt_outlined,
-                                          color: Colors.white,
-                                          size: 17,
-                                        ),
-                                        SizedBox(
-                                          width: 10,
-                                        ),
-                                        Text(
-                                          "231",
-                                          style: TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 13),
-                                        ),
-                                        SizedBox(
-                                          width: 20,
-                                        ),
-                                        Icon(
-                                          Icons.comment_outlined,
-                                          color: Colors.white,
-                                          size: 17,
-                                        ),
-                                        SizedBox(
-                                          width: 10,
-                                        ),
-                                        Text(
-                                          "441",
-                                          style: TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 13),
-                                        ),
-                                        SizedBox(
-                                          width: 20,
-                                        ),
-                                        Icon(
-                                          Icons.share_outlined,
-                                          color: Colors.white,
-                                          size: 17,
-                                        ),
-                                        SizedBox(
-                                          width: 10,
-                                        ),
-                                        Text(
-                                          "631",
-                                          style: TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 13),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          const Text(
-                            "Build Yourself",
-                            style: TextStyle(
-                                fontSize: 25, fontWeight: FontWeight.w500),
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          Row(
-                            children: [
-                              const Text(
-                                "New York",
-                              ),
-                              const Spacer(),
-                              Icon(
-                                Icons.star,
-                                color: Colors.blue.shade800,
-                                size: 18,
-                              ),
-                              Icon(
-                                Icons.star,
-                                color: Colors.blue.shade800,
-                                size: 18,
-                              ),
-                              Icon(
-                                Icons.star,
-                                color: Colors.blue.shade800,
-                                size: 18,
-                              ),
-                              Icon(
-                                Icons.star,
-                                color: Colors.blue.shade800,
-                                size: 18,
-                              ),
-                              Icon(
-                                Icons.star_half,
-                                color: Colors.blue.shade800,
-                                size: 18,
-                              ),
-                            ],
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          Row(
-                            children: [
-                              ClipRRect(
-                                  borderRadius: BorderRadius.circular(10),
-                                  child: Image.asset(
-                                    "assets/singerimg/1.png",
-                                    height: 50,
-                                    fit: BoxFit.cover,
-                                  )),
-                              const SizedBox(
-                                width: 10,
-                              ),
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(10),
-                                child: Image.asset(
-                                  "assets/singerimg/2.png",
-                                  height: 50,
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                              const SizedBox(
-                                width: 10,
-                              ),
-                              ClipRRect(
-                                  borderRadius: BorderRadius.circular(10),
-                                  child: Image.asset(
-                                    "assets/singerimg/3.png",
-                                    height: 50,
-                                    fit: BoxFit.cover,
-                                  )),
-                              const SizedBox(
-                                width: 10,
-                              ),
-                              ClipRRect(
-                                  borderRadius: BorderRadius.circular(10),
-                                  child: Image.asset(
-                                    "assets/singerimg/4.png",
-                                    height: 50,
-                                    fit: BoxFit.cover,
-                                  )),
-                              const SizedBox(
-                                width: 10,
-                              ),
-                              const Text(
-                                "+8 more",
-                                style: TextStyle(fontSize: 15),
-                              )
-                            ],
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          const Text(
-                            "Someone who is not witly or sharp, but rather,\n they are ignorant unintelligent, or senseless.",
-                            style: TextStyle(fontSize: 16),
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          Row(
-                            children: [
-                              ElevatedButton(
-                                onPressed: () {},
-                                style: ButtonStyle(
-                                  backgroundColor: MaterialStateProperty.all(
-                                      Colors.blue.shade200),
-                                ),
-                                child: const Text(
-                                  "Book",
-                                  style: TextStyle(color: Colors.white),
-                                ),
-                              ),
-                              const SizedBox(
-                                width: 10,
-                              ),
-                              ElevatedButton(
-                                onPressed: () {},
-                                style: ButtonStyle(
-                                  backgroundColor: MaterialStateProperty.all(
-                                      Colors.blue.shade600),
-                                ),
-                                child: const Text(
-                                  "Invite",
-                                  style: TextStyle(color: Colors.white),
-                                ),
-                              ),
-                              const SizedBox(
-                                width: 10,
-                              ),
-                              const Text(
-                                "View Gallery",
-                                style: TextStyle(fontSize: 15),
-                              )
-                            ],
-                          )
-                        ],
-                      ),
+                    HomeEventContainer(
+                      img: "assets/img/build.jpg",
+                      title: "Build Yourself",
+                      text: "Mumbai",
+                      des:
+                          "A person who does not speak a great deal,\n someone who talks with as few words as possible.",
                     ),
                     const SizedBox(
                       height: 10,
@@ -896,7 +201,52 @@ class _HomeScreenState extends State<HomeScreen> {
                     const SizedBox(
                       height: 10,
                     ),
-                    
+
+                    SizedBox(
+                      height: MediaQuery.sizeOf(context).height,
+                      child: MasonryGridView.builder(
+                        gridDelegate:
+                        const SliverSimpleGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2),
+                        itemCount: providerr!.gridList.length,
+                        itemBuilder: (context, index) {
+                          return Container(
+                            margin: const EdgeInsets.all(5),
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(8)),
+                            child: Padding(
+                              padding: const EdgeInsets.all(10),
+                              child: Column(
+                                children: [
+                                  ClipRRect(
+                                    borderRadius: BorderRadius.circular(15),
+                                    child: Image.asset(
+                                        '${providerr!.gridList[index].img}'),
+                                  ),
+                                  Text(
+                                    '${providerr!.gridList[index].title}',
+                                    style: const TextStyle(
+                                        color: Colors.black, fontSize: 20,fontWeight: FontWeight.bold),
+                                  ),
+                                  Text(
+                                    '${providerr!.gridList[index].events}',
+                                    style: const TextStyle(
+                                        color: Colors.black, fontSize: 15),
+                                  ),
+                                  const SizedBox(height: 10),
+                                  Text(
+                                    '${providerr!.gridList[index].des}',
+                                    style: const TextStyle(color: Colors.black),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+
                     //people
                     Container(
                       width: MediaQuery.sizeOf(context).width * 0.90,
@@ -906,10 +256,9 @@ class _HomeScreenState extends State<HomeScreen> {
                           color: Colors.white,
                           boxShadow: const [
                             BoxShadow(
-                              color: Colors.grey,
-                              spreadRadius: 0.2,
-                              blurRadius: 2,
-                            )
+                                color: Colors.grey,
+                                spreadRadius: 0.2,
+                                blurRadius: 2)
                           ],
                           borderRadius: BorderRadius.circular(5)),
                       child: Column(
@@ -918,176 +267,44 @@ class _HomeScreenState extends State<HomeScreen> {
                           const Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Text("People",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 25),),
-                              Text("View All",style: TextStyle(fontSize: 15),)
+                              Text(
+                                "People",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 25),
+                              ),
+                              Text(
+                                "View All",
+                                style: TextStyle(fontSize: 15),
+                              )
                             ],
                           ),
-                          const SizedBox(height: 10,),
-                          SingleChildScrollView(scrollDirection: Axis.horizontal,
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          SingleChildScrollView(
+                            scrollDirection: Axis.horizontal,
                             child: Row(
                               children: [
-                                Column(
-                                  children: [
-                                    ClipRRect( borderRadius: BorderRadius.circular(10),child: Image.asset("assets/singerimg/3.png",height: 110,)),
-                                    const SizedBox(height: 10,),
-                                    const Text("Juliet Wykes",style: TextStyle(fontSize: 18),),
-                                    const SizedBox(height: 2,),
-                                    const Text("senior Designer",style: TextStyle(fontSize: 15),),
-                                    const SizedBox(height: 10,),
-                                    Row(
-                                      children: [
-                                        Icon(
-                                          Icons.star,
-                                          color: Colors.blue.shade800,
-                                          size: 18,
-                                        ),
-                                        Icon(
-                                          Icons.star,
-                                          color: Colors.blue.shade800,
-                                          size: 18,
-                                        ),
-                                        Icon(
-                                          Icons.star,
-                                          color: Colors.blue.shade800,
-                                          size: 18,
-                                        ),
-                                        Icon(
-                                          Icons.star,
-                                          color: Colors.blue.shade800,
-                                          size: 18,
-                                        ),
-                                        Icon(
-                                          Icons.star_half,
-                                          color: Colors.blue.shade800,
-                                          size: 18,
-                                        ),
-                                      ],
-                                    ),
-                                    const SizedBox(height: 10,),
-                                    ElevatedButton(
-                                      onPressed: () {},
-                                      style: ButtonStyle(
-                                        backgroundColor: MaterialStateProperty.all(
-                                            Colors.blue.shade600),
-                                      ),
-                                      child: const Text(
-                                        "Follow",
-                                        style: TextStyle(color: Colors.white),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                SizedBox(width: 20,),
-                                Column(
-                                  children: [
-                                    ClipRRect( borderRadius: BorderRadius.circular(10),child: Image.asset("assets/singerimg/4.png",height: 110,)),
-                                    const SizedBox(height: 10,),
-                                    const Text("Dag Curner",style: TextStyle(fontSize: 18),),
-                                    const SizedBox(height: 2,),
-                                    const Text("Manager",style: TextStyle(fontSize: 15),),
-                                    const SizedBox(height: 10,),
-                                    Row(
-                                      children: [
-                                        Icon(
-                                          Icons.star,
-                                          color: Colors.blue.shade800,
-                                          size: 18,
-                                        ),
-                                        Icon(
-                                          Icons.star,
-                                          color: Colors.blue.shade800,
-                                          size: 18,
-                                        ),
-                                        Icon(
-                                          Icons.star,
-                                          color: Colors.blue.shade800,
-                                          size: 18,
-                                        ),
-                                        Icon(
-                                          Icons.star,
-                                          color: Colors.blue.shade800,
-                                          size: 18,
-                                        ),
-                                        Icon(
-                                          Icons.star_half,
-                                          color: Colors.blue.shade800,
-                                          size: 18,
-                                        ),
-                                      ],
-                                    ),
-                                    const SizedBox(height: 10,),
-                                    ElevatedButton(
-                                      onPressed: () {},
-                                      style: ButtonStyle(
-                                        backgroundColor: MaterialStateProperty.all(
-                                            Colors.blue.shade600),
-                                      ),
-                                      child: const Text(
-                                        "Follow",
-                                        style: TextStyle(color: Colors.white),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                SizedBox(width: 20,),
-                                Column(
-                                  children: [
-                                    ClipRRect( borderRadius: BorderRadius.circular(10),child: Image.asset("assets/singerimg/9.png",height: 110,)),
-                                    const SizedBox(height: 10,),
-                                    const Text("Grove stark",style: TextStyle(fontSize: 18),),
-                                    const SizedBox(height: 2,),
-                                    const Text("Ux/Manager",style: TextStyle(fontSize: 15),),
-                                    const SizedBox(height: 10,),
-                                    Row(
-                                      children: [
-                                        Icon(
-                                          Icons.star,
-                                          color: Colors.blue.shade800,
-                                          size: 18,
-                                        ),
-                                        Icon(
-                                          Icons.star,
-                                          color: Colors.blue.shade800,
-                                          size: 18,
-                                        ),
-                                        Icon(
-                                          Icons.star,
-                                          color: Colors.blue.shade800,
-                                          size: 18,
-                                        ),
-                                        Icon(
-                                          Icons.star,
-                                          color: Colors.blue.shade800,
-                                          size: 18,
-                                        ),
-                                        Icon(
-                                          Icons.star_half,
-                                          color: Colors.blue.shade800,
-                                          size: 18,
-                                        ),
-                                      ],
-                                    ),
-                                    const SizedBox(height: 10,),
-                                    ElevatedButton(
-                                      onPressed: () {},
-                                      style: ButtonStyle(
-                                        backgroundColor: MaterialStateProperty.all(
-                                            Colors.blue.shade600),
-                                      ),
-                                      child: const Text(
-                                        "Follow",
-                                        style: TextStyle(color: Colors.white),
-                                      ),
-                                    ),
-                                  ],
-                                ),
+                                PeopleWidget(
+                                    img: "assets/singerimg/3.png",
+                                    name: "Juliet Wykes",
+                                    qualification: "Senior Designer"),
+                                const SizedBox(width: 20),
+                                PeopleWidget(
+                                    img: "assets/singerimg/4.png",
+                                    name: "Dag Curner",
+                                    qualification: "Manager"),
+                                const SizedBox(width: 20),
+                                PeopleWidget(
+                                    img: "assets/singerimg/9.png",
+                                    name: "Grove stark",
+                                    qualification: "Ux/Manager"),
                               ],
                             ),
                           )
                         ],
                       ),
                     ),
-
                   ],
                 ),
               ),
