@@ -98,16 +98,19 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
 
                     //first
-                    HomeEventContainer(
-                      img: "assets/img/singer1.jpg",
-                      title: "Lifestyle trends",
-                      text: "New York",
-                      des:
-                          "Someone who is not witly or sharp, but rather,\n they are ignorant unintelligent, or senseless.",
+                    InkWell(
+                      onTap: () {
+                        Navigator.pushNamed(context, 'eventdetail');
+                      },
+                      child: HomeEventContainer(
+                        img: "assets/img/singer1.jpg",
+                        title: "Lifestyle trends",
+                        text: "New York",
+                        des:
+                            "Someone who is not witly or sharp, but rather,\n they are ignorant unintelligent, or senseless.",
+                      ),
                     ),
-                    const SizedBox(
-                      height: 10,
-                    ),
+                    const SizedBox(height: 10),
 
                     //second
                     HomeEventContainer(
@@ -127,9 +130,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       des:
                           "A person who does not speak a great deal,\n someone who talks with as few words as possible.",
                     ),
-                    const SizedBox(
-                      height: 10,
-                    ),
+                    const SizedBox(height: 10),
 
                     //theme
                     Container(

@@ -212,7 +212,9 @@ class HomeEventContainer extends StatelessWidget {
           Row(
             children: [
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(context, 'bookevent');
+                },
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all(
                       Colors.blue.shade200),

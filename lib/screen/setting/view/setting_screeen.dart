@@ -62,17 +62,6 @@ class _SettingScreeenState extends State<SettingScreeen> {
               child: ListView(
                 children: [
                   ListTile(
-                    leading: const Icon(Icons.dashboard_customize_outlined),
-                    title: const Text(
-                      "Dashboard",
-                      style: TextStyle(fontSize: 18),
-                    ),
-                    trailing: IconButton(
-                      onPressed: () {},
-                      icon: const Icon(Icons.navigate_next),
-                    ),
-                  ),
-                  ListTile(
                     leading: const Icon(Icons.event),
                     title: const Text(
                       "Events",
@@ -95,17 +84,6 @@ class _SettingScreeenState extends State<SettingScreeen> {
                       onPressed: () {
                         Navigator.pushNamed(context, 'interests');
                       },
-                      icon: const Icon(Icons.navigate_next),
-                    ),
-                  ),
-                  ListTile(
-                    leading: const Icon(Icons.manage_search),
-                    title: const Text(
-                      "Search Event",
-                      style: TextStyle(fontSize: 18),
-                    ),
-                    trailing: IconButton(
-                      onPressed: () {},
                       icon: const Icon(Icons.navigate_next),
                     ),
                   ),
@@ -151,7 +129,9 @@ class _SettingScreeenState extends State<SettingScreeen> {
                       style: TextStyle(fontSize: 18),
                     ),
                     trailing: IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushNamed(context, 'notification');
+                      },
                       icon: const Icon(Icons.navigate_next),
                     ),
                   ),
