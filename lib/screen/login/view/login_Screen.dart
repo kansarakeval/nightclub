@@ -21,30 +21,30 @@ class _LoginScreenState extends State<LoginScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   GifView.asset("assets/img/Sign in.gif",height: 200,width: 200,),
-                  SizedBox(
+                  const SizedBox(
                     height: 5,
                   ),
-                  Text(
+                  const Text(
                     "Login to Your Account",
                     style: TextStyle(
                         fontSize: 25,
                         fontWeight: FontWeight.bold,
                         color: Color(0xFF00B79B)),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 30,
                   ),
-                  TextField(
+                  const TextField(
                     keyboardType: TextInputType.emailAddress,
                     decoration: InputDecoration(
                         border: OutlineInputBorder(),
                         prefixIcon: Icon(Icons.email),
                         labelText: "Email"),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
-                  TextField(
+                  const TextField(
                     keyboardType: TextInputType.number,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(),
@@ -53,14 +53,14 @@ class _LoginScreenState extends State<LoginScreen> {
                       suffixIcon: Icon(Icons.remove_red_eye),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   InkWell(
                     onTap: () {
                       Navigator.pushNamed(context, 'forget');
                     },
-                    child: Align(
+                    child: const Align(
                       alignment: Alignment.centerRight,
                       child: Text(
                         "Forget the password?",
@@ -69,7 +69,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   SizedBox(
@@ -78,7 +78,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       onPressed: () {
                         Navigator.pushReplacementNamed(context, 'home');
                       },
-                      child: Text(
+                      child: const Text(
                         "Sign in",
                         style: TextStyle(
                           color: Color(0xFF00B79B),
@@ -86,14 +86,14 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
-                  Text(
+                  const Text(
                     "or continue with",
                     style: TextStyle(fontSize: 15, color: Colors.grey),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   Row(
@@ -105,7 +105,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         height: 30,
                         width: 30,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 30,
                       ),
                       Image.asset(
@@ -114,7 +114,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         height: 30,
                         width: 30,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 30,
                       ),
                       Image.asset(
@@ -125,24 +125,24 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(
+                      const Text(
                         "Don't have on account?",
                         style: TextStyle(color: Colors.grey),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 10,
                       ),
                       InkWell(
                           onTap: () {
                             Navigator.pushNamed(context, 'registration');
                           },
-                          child: Text(
+                          child: const Text(
                             "Sign up",
                             style: TextStyle(color: Color(0xFF00B79B)),
                           )),
