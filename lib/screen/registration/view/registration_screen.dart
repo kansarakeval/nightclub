@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gif_view/gif_view.dart';
 import 'package:nightclub/services/api_call.dart';
 import 'package:nightclub/models/reg.dart';
 
@@ -58,14 +59,14 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Image.asset("assets/img/sing_up.png",width:150,height: 150,),
+                  GifView.asset("assets/img/Sign up.gif",height: 200,width: 200,),
                   SizedBox(height: 5,),
                   Text(
                     "Create New Account",
                     style: TextStyle(
                         fontSize: 25,
                         fontWeight: FontWeight.bold,
-                        color: Colors.blue.shade900),
+                        color: Color(0xFF00B79B)),
                   ),
                   const SizedBox(
                     height: 30,
@@ -152,7 +153,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                               u_psw: _upswController.text.toString()));
                           Navigator.pop(context);
                         },
-                        child: const Text("Sign up"),
+                        child: const Text("Sign up",style: TextStyle(color: Color(0xFF00B79B)),),
                       )),
                   const SizedBox(
                     height: 20,
@@ -212,7 +213,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                           },
                           child: Text(
                             "Sign in",
-                            style: TextStyle(color: Colors.blue.shade900),
+                            style: TextStyle(color: Color(0xFF00B79B)),
                           )),
                     ],
                   )

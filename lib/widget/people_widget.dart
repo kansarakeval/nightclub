@@ -18,27 +18,27 @@ class PeopleWidget extends StatelessWidget {
           children: [
             Icon(
               Icons.star,
-              color: Colors.blue.shade800,
+              color: Color(0xFF00B79B),
               size: 18,
             ),
             Icon(
               Icons.star,
-              color: Colors.blue.shade800,
+              color: Color(0xFF00B79B),
               size: 18,
             ),
             Icon(
               Icons.star,
-              color: Colors.blue.shade800,
+              color: Color(0xFF00B79B),
               size: 18,
             ),
             Icon(
               Icons.star,
-              color: Colors.blue.shade800,
+              color: Color(0xFF00B79B),
               size: 18,
             ),
             Icon(
               Icons.star_half,
-              color: Colors.blue.shade800,
+              color: Color(0xFF00B79B),
               size: 18,
             ),
           ],
@@ -48,7 +48,7 @@ class PeopleWidget extends StatelessWidget {
           onPressed: () {},
           style: ButtonStyle(
             backgroundColor: MaterialStateProperty.all(
-                Colors.blue.shade600),
+                Color(0xFF00B79B)),
           ),
           child: const Text(
             "Follow",

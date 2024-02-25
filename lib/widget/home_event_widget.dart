@@ -122,27 +122,27 @@ class HomeEventContainer extends StatelessWidget {
               const Spacer(),
               Icon(
                 Icons.star,
-                color: Colors.blue.shade800,
+                color: Color(0xFF00B79B),
                 size: 18,
               ),
               Icon(
                 Icons.star,
-                color: Colors.blue.shade800,
+                color: Color(0xFF00B79B),
                 size: 18,
               ),
               Icon(
                 Icons.star,
-                color: Colors.blue.shade800,
+                color: Color(0xFF00B79B),
                 size: 18,
               ),
               Icon(
                 Icons.star,
-                color: Colors.blue.shade800,
+                color: Color(0xFF00B79B),
                 size: 18,
               ),
               Icon(
                 Icons.star_half,
-                color: Colors.blue.shade800,
+                color: Color(0xFF00B79B),
                 size: 18,
               ),
             ],
@@ -217,7 +217,7 @@ class HomeEventContainer extends StatelessWidget {
                 },
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all(
-                      Colors.blue.shade200),
+                      Color(0xFF00B79B)),
                 ),
                 child: const Text(
                   "Book",
@@ -231,7 +231,7 @@ class HomeEventContainer extends StatelessWidget {
                 onPressed: () {},
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all(
-                      Colors.blue.shade600),
+                      Color(0xFF00B79B)),
                 ),
                 child: const Text(
                   "Invite",

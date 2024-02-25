@@ -18,7 +18,7 @@ class _SettingScreeenState extends State<SettingScreeen> {
               height: MediaQuery.sizeOf(context).height * 0.35,
               width: MediaQuery.sizeOf(context).width,
               decoration: BoxDecoration(
-                color: Colors.blue.shade800,
+                color: Color(0xFF00B79B),
               ),
               child: Column(
                 children: [

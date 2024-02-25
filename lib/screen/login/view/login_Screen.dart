@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gif_view/gif_view.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -19,11 +20,16 @@ class _LoginScreenState extends State<LoginScreen> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Image.asset("assets/img/sign_in.png",width:150,height: 150,),
-                  SizedBox(height: 5,),
+                  GifView.asset("assets/img/Sign in.gif",height: 200,width: 200,),
+                  SizedBox(
+                    height: 5,
+                  ),
                   Text(
                     "Login to Your Account",
-                    style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold,color: Colors.blue.shade900),
+                    style: TextStyle(
+                        fontSize: 25,
+                        fontWeight: FontWeight.bold,
+                        color: Color(0xFF00B79B)),
                   ),
                   SizedBox(
                     height: 30,
@@ -58,43 +64,88 @@ class _LoginScreenState extends State<LoginScreen> {
                       alignment: Alignment.centerRight,
                       child: Text(
                         "Forget the password?",
-                        style: TextStyle(fontSize: 15, color: Colors.blue.shade900),
+                        style:
+                            TextStyle(fontSize: 15, color: Color(0xFF00B79B)),
                       ),
                     ),
                   ),
-                  SizedBox(height: 20,),
+                  SizedBox(
+                    height: 20,
+                  ),
                   SizedBox(
                     width: double.infinity,
-                      child: ElevatedButton(onPressed: () {
+                    child: ElevatedButton(
+                      onPressed: () {
                         Navigator.pushReplacementNamed(context, 'home');
-                      }, child: Text("Sign in"),),),
-                  SizedBox(height: 20,),
+                      },
+                      child: Text(
+                        "Sign in",
+                        style: TextStyle(
+                          color: Color(0xFF00B79B),
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
                   Text(
                     "or continue with",
                     style: TextStyle(fontSize: 15, color: Colors.grey),
                   ),
-                  SizedBox(height: 20,),
+                  SizedBox(
+                    height: 20,
+                  ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Image.asset("assets/img/facebook.png",fit: BoxFit.cover,height: 30,width: 30,),
-                      SizedBox(width: 30,),
-                      Image.asset("assets/img/google.png",fit: BoxFit.cover,height: 30,width: 30,),
-                      SizedBox(width: 30,),
-                      Image.asset("assets/img/apple.png",fit: BoxFit.cover,height: 30,width: 30,),
+                      Image.asset(
+                        "assets/img/facebook.png",
+                        fit: BoxFit.cover,
+                        height: 30,
+                        width: 30,
+                      ),
+                      SizedBox(
+                        width: 30,
+                      ),
+                      Image.asset(
+                        "assets/img/google.png",
+                        fit: BoxFit.cover,
+                        height: 30,
+                        width: 30,
+                      ),
+                      SizedBox(
+                        width: 30,
+                      ),
+                      Image.asset(
+                        "assets/img/apple.png",
+                        fit: BoxFit.cover,
+                        height: 30,
+                        width: 30,
+                      ),
                     ],
                   ),
-                  SizedBox(height: 20,),
+                  SizedBox(
+                    height: 20,
+                  ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text("Don't have on account?",style: TextStyle(color: Colors.grey),),
-                      SizedBox(width: 10,),
+                      Text(
+                        "Don't have on account?",
+                        style: TextStyle(color: Colors.grey),
+                      ),
+                      SizedBox(
+                        width: 10,
+                      ),
                       InkWell(
                           onTap: () {
                             Navigator.pushNamed(context, 'registration');
                           },
-                          child: Text("Sign up",style: TextStyle(color: Colors.blue.shade900),)),
+                          child: Text(
+                            "Sign up",
+                            style: TextStyle(color: Color(0xFF00B79B)),
+                          )),
                     ],
                   )
                 ],

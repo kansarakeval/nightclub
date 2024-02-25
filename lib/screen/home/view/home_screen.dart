@@ -33,7 +33,7 @@ class _HomeScreenState extends State<HomeScreen> {
               height: MediaQuery.sizeOf(context).height * 0.40,
               width: MediaQuery.sizeOf(context).width,
               decoration: BoxDecoration(
-                color: Colors.blue.shade800,
+                color: Color(0xFF00B79B),
                 borderRadius: const BorderRadius.only(
                   bottomLeft: Radius.circular(20),
                   bottomRight: Radius.circular(20),
@@ -173,7 +173,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 onPressed: () {},
                                 style: ButtonStyle(
                                   backgroundColor: MaterialStateProperty.all(
-                                      Colors.blue.shade200),
+                                      Color(0xFF00B79B)),
                                 ),
                                 child: const Text(
                                   "Light Mode",
@@ -187,7 +187,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 onPressed: () {},
                                 style: ButtonStyle(
                                   backgroundColor: MaterialStateProperty.all(
-                                      Colors.blue.shade600),
+                                      Color(0xFF00B79B)),
                                 ),
                                 child: const Text(
                                   "Dark Mode",

@@ -30,9 +30,9 @@ class _InterestsScreenState extends State<InterestsScreen> {
             Container(
               height: MediaQuery.sizeOf(context).height * 0.40,
               width: MediaQuery.sizeOf(context).width,
-              decoration: BoxDecoration(
-                color: Colors.blue.shade800,
-                borderRadius: const BorderRadius.only(
+              decoration: const BoxDecoration(
+                color: Color(0xFF00B79B),
+                borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(20),
                   bottomRight: Radius.circular(20),
                 ),
