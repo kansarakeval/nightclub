@@ -22,9 +22,9 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
           Container(
             height: MediaQuery.sizeOf(context).height * 0.40,
             width: MediaQuery.sizeOf(context).width,
-            decoration: BoxDecoration(
-              color: Colors.blue.shade800,
-              borderRadius: const BorderRadius.only(
+            decoration: const BoxDecoration(
+              color: Color(0xFF00B79B),
+              borderRadius: BorderRadius.only(
                 bottomLeft: Radius.circular(20),
                 bottomRight: Radius.circular(20),
               ),
@@ -75,73 +75,11 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(10),
                           child: Stack(
-                            alignment: Alignment.bottomCenter,
                             children: [
                               Image.asset(
                                 "assets/img/singer1.jpg",
                                 height: 230,
                                 fit: BoxFit.cover,
-                              ),
-                              Container(
-                                height: 44,
-                                width: MediaQuery.sizeOf(context).width * 0.84,
-                                padding: const EdgeInsets.only(left: 20),
-                                decoration: BoxDecoration(
-                                  color: Colors.blue.withOpacity(0.2),
-                                  borderRadius: const BorderRadius.only(
-                                    bottomRight: Radius.circular(10),
-                                    bottomLeft: Radius.circular(10),
-                                  ),
-                                ),
-                                child: const Row(
-                                  children: [
-                                    Icon(
-                                      Icons.thumb_up_alt_outlined,
-                                      color: Colors.white,
-                                      size: 17,
-                                    ),
-                                    SizedBox(
-                                      width: 10,
-                                    ),
-                                    Text(
-                                      "231",
-                                      style: TextStyle(
-                                          color: Colors.white, fontSize: 13),
-                                    ),
-                                    SizedBox(
-                                      width: 20,
-                                    ),
-                                    Icon(
-                                      Icons.comment_outlined,
-                                      color: Colors.white,
-                                      size: 17,
-                                    ),
-                                    SizedBox(
-                                      width: 10,
-                                    ),
-                                    Text(
-                                      "441",
-                                      style: TextStyle(
-                                          color: Colors.white, fontSize: 13),
-                                    ),
-                                    SizedBox(
-                                      width: 20,
-                                    ),
-                                    Icon(
-                                      Icons.share_outlined,
-                                      color: Colors.white,
-                                      size: 17,
-                                    ),
-                                    SizedBox(
-                                      width: 10,
-                                    ),
-                                    Text(
-                                      "631",
-                                      style: TextStyle(
-                                          color: Colors.white, fontSize: 13),
-                                    ),
-                                  ],
-                                ),
                               ),
                             ],
                           ),
@@ -195,7 +133,7 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
                       ),
                       const SizedBox(height: 10),
                       Container(
-                        padding: EdgeInsets.all(10),
+                        padding: const EdgeInsets.all(10),
                         width: MediaQuery.sizeOf(context).width*0.84,
                         height: MediaQuery.sizeOf(context).height*0.12,
                         decoration: BoxDecoration(
@@ -205,10 +143,10 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
                             bottomLeft: Radius.circular(10),
                           ),
                         ),
-                        child: Row(
+                        child: const Row(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
-                            Text("4.5",style: TextStyle(fontSize: 30,fontWeight: FontWeight.bold,color: Colors.blue.shade800),),
+                            Text("4.5",style: TextStyle(fontSize: 30,fontWeight: FontWeight.bold,color: Color(0xFF00B79B)),),
                             SizedBox(width: 10,),
                             Column(
                               mainAxisSize: MainAxisSize.min,
@@ -217,27 +155,27 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
                                   children: [
                                     Icon(
                                       Icons.star,
-                                      color: Colors.blue.shade800,
+                                      color: Color(0xFF00B79B),
                                       size: 20,
                                     ),
                                     Icon(
                                       Icons.star,
-                                      color: Colors.blue.shade800,
+                                      color: Color(0xFF00B79B),
                                       size: 20,
                                     ),
                                     Icon(
                                       Icons.star,
-                                      color: Colors.blue.shade800,
+                                      color: Color(0xFF00B79B),
                                       size: 20,
                                     ),
                                     Icon(
                                       Icons.star,
-                                      color: Colors.blue.shade800,
+                                      color: Color(0xFF00B79B),
                                       size: 20,
                                     ),
                                     Icon(
                                       Icons.star_half,
-                                      color: Colors.blue.shade800,
+                                      color: Color(0xFF00B79B),
                                       size: 20,
                                     ),
                                   ],
@@ -315,7 +253,7 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
                             onPressed: () {},
                             style: ButtonStyle(
                               backgroundColor: MaterialStateProperty.all(
-                                  Colors.blue.shade200),
+                                  const Color(0xFF00B79B)),
                             ),
                             child: const Text(
                               "Book",
@@ -329,7 +267,7 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
                             onPressed: () {},
                             style: ButtonStyle(
                               backgroundColor: MaterialStateProperty.all(
-                                  Colors.blue.shade600),
+                                  const Color(0xFF00B79B)),
                             ),
                             child: const Text(
                               "Invite",

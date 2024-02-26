@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:nightclub/screen/dash/provider/dash_provider.dart';
 import 'package:nightclub/screen/home/provider/home_provider.dart';
 import 'package:nightclub/screen/location/provider/location_provider.dart';
 import 'package:nightclub/utils/app_routes.dart';
@@ -11,6 +12,7 @@ void main() {
         providers: [
           ChangeNotifierProvider.value(value: HomeProvider()),
           ChangeNotifierProvider.value(value: LocationProvider()),
+          ChangeNotifierProvider.value(value: DashProvider()),
         ],
         child: MaterialApp(
             debugShowCheckedModeBanner: false,

@@ -37,7 +37,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
                   children: [
                     IconButton(
                         onPressed: () {
-                          Navigator.popUntil(context, ModalRoute.withName('home'));
+                          Navigator.pop(context);
                         },
                         icon: const Icon(
                           Icons.arrow_back,

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class SettingScreeen extends StatefulWidget {
-  const SettingScreeen({super.key});
+class ProfileScreen extends StatefulWidget {
+  const ProfileScreen({super.key});
 
   @override
-  State<SettingScreeen> createState() => _SettingScreeenState();
+  State<ProfileScreen> createState() => _ProfileScreenState();
 }
 
-class _SettingScreeenState extends State<SettingScreeen> {
+class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -15,23 +15,14 @@ class _SettingScreeenState extends State<SettingScreeen> {
         body: Column(
           children: [
             Container(
-              height: MediaQuery.sizeOf(context).height * 0.35,
+              height: MediaQuery.sizeOf(context).height * 0.30,
               width: MediaQuery.sizeOf(context).width,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: Color(0xFF00B79B),
               ),
               child: Column(
                 children: [
-                  Align(
-                      alignment: Alignment.centerRight,
-                      child: IconButton(
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
-                          icon: const Icon(
-                            Icons.clear,
-                            color: Colors.white,
-                          ))),
+                  const SizedBox(height: 20),
                   ClipRRect(
                       borderRadius: BorderRadius.circular(10),
                       child: Image.asset(
@@ -287,3 +278,4 @@ class _SettingScreeenState extends State<SettingScreeen> {
     );
   }
 }
+

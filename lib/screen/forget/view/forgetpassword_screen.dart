@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class ForgetpasswordScreen extends StatefulWidget {
-  const ForgetpasswordScreen({super.key});
+class ForgetPasswordScreen extends StatefulWidget {
+  const ForgetPasswordScreen({super.key});
 
   @override
-  State<ForgetpasswordScreen> createState() => _ForgetpasswordScreenState();
+  State<ForgetPasswordScreen> createState() => _ForgetPasswordScreenState();
 }
 
-class _ForgetpasswordScreenState extends State<ForgetpasswordScreen> {
+class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -19,14 +19,14 @@ class _ForgetpasswordScreenState extends State<ForgetpasswordScreen> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
+                  const Text(
                     "Forget Passsword",
-                    style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold,color: Colors.blue.shade900),
+                    style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold,color: Color(0xFF00B79B)),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 30,
                   ),
-                  TextField(
+                  const TextField(
                     keyboardType: TextInputType.number,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(),
@@ -35,10 +35,10 @@ class _ForgetpasswordScreenState extends State<ForgetpasswordScreen> {
                       suffixIcon: Icon(Icons.remove_red_eye),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
-                  TextField(
+                  const TextField(
                     keyboardType: TextInputType.number,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(),
@@ -47,12 +47,12 @@ class _ForgetpasswordScreenState extends State<ForgetpasswordScreen> {
                       suffixIcon: Icon(Icons.remove_red_eye),
                     ),
                   ),
-                  SizedBox(height: 20,),
+                  const SizedBox(height: 20,),
                   SizedBox(
                       width: double.infinity,
                       child: ElevatedButton(onPressed: () {
                         Navigator.pop(context);
-                      }, child: Text("continue"),),),
+                      }, child: const Text("continue",style: TextStyle(color: Color(0xFF00B79B))),),),
                 ],
               ),
             ),

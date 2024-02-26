@@ -27,78 +27,14 @@ class HomeEventContainer extends StatelessWidget {
             child: ClipRRect(
               borderRadius: BorderRadius.circular(10),
               child: Stack(
-                alignment: Alignment.bottomCenter,
+                alignment: Alignment.topRight,
                 children: [
                   Image.asset(
                     img ?? "",
                     height: 230,
                     fit: BoxFit.cover,
                   ),
-                  Container(
-                    height: 44,
-                    width:
-                    MediaQuery.sizeOf(context).width * 0.84,
-                    padding: const EdgeInsets.only(left: 20),
-                    decoration: BoxDecoration(
-                      color: Colors.blue.withOpacity(0.2),
-                      borderRadius: const BorderRadius.only(
-                        bottomRight: Radius.circular(10),
-                        bottomLeft: Radius.circular(10),
-                      ),
-                    ),
-                    child: const Row(
-                      children: [
-                        Icon(
-                          Icons.thumb_up_alt_outlined,
-                          color: Colors.white,
-                          size: 17,
-                        ),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        Text(
-                          "231",
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 13),
-                        ),
-                        SizedBox(
-                          width: 20,
-                        ),
-                        Icon(
-                          Icons.comment_outlined,
-                          color: Colors.white,
-                          size: 17,
-                        ),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        Text(
-                          "441",
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 13),
-                        ),
-                        SizedBox(
-                          width: 20,
-                        ),
-                        Icon(
-                          Icons.share_outlined,
-                          color: Colors.white,
-                          size: 17,
-                        ),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        Text(
-                          "631",
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 13),
-                        ),
-                      ],
-                    ),
-                  ),
+                  IconButton(onPressed: (){}, icon: Icon(Icons.favorite_border,color: Colors.white,))
                 ],
               ),
             ),
@@ -156,43 +92,35 @@ class HomeEventContainer extends StatelessWidget {
                   borderRadius: BorderRadius.circular(10),
                   child: Image.asset(
                     "assets/singerimg/1.png",
-                    height: 50,
+                    height: 40,
                     fit: BoxFit.cover,
                   )),
-              const SizedBox(
-                width: 10,
-              ),
+              const SizedBox(width: 5),
               ClipRRect(
                 borderRadius: BorderRadius.circular(10),
                 child: Image.asset(
                   "assets/singerimg/2.png",
-                  height: 50,
+                  height: 40,
                   fit: BoxFit.cover,
                 ),
               ),
-              const SizedBox(
-                width: 10,
-              ),
+              const SizedBox(width: 5),
               ClipRRect(
                   borderRadius: BorderRadius.circular(10),
                   child: Image.asset(
                     "assets/singerimg/3.png",
-                    height: 50,
+                    height: 40,
                     fit: BoxFit.cover,
                   )),
-              const SizedBox(
-                width: 10,
-              ),
+              const SizedBox(width: 5),
               ClipRRect(
                   borderRadius: BorderRadius.circular(10),
                   child: Image.asset(
                     "assets/singerimg/4.png",
-                    height: 50,
+                    height: 40,
                     fit: BoxFit.cover,
                   )),
-              const SizedBox(
-                width: 10,
-              ),
+              const SizedBox(width: 5),
               const Text(
                 "+8 more",
                 style: TextStyle(fontSize: 15),
@@ -242,6 +170,7 @@ class HomeEventContainer extends StatelessWidget {
                 width: 10,
               ),
               const Text(
+
                 "View Gallery",
                 style: TextStyle(fontSize: 15),
               )

@@ -28,9 +28,9 @@ class _LocationScreenState extends State<LocationScreen> {
             Container(
               height: MediaQuery.sizeOf(context).height * 0.40,
               width: MediaQuery.sizeOf(context).width,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: Color(0xFF00B79B),
-                borderRadius: const BorderRadius.only(
+                borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(20),
                   bottomRight: Radius.circular(20),
                 ),
@@ -39,17 +39,10 @@ class _LocationScreenState extends State<LocationScreen> {
             SingleChildScrollView(
               child: Column(
                 children: [
-                  Row(
-                    children: [
-                      IconButton(onPressed: (){
-                        Navigator.popUntil(context, ModalRoute.withName('home'));
-                      }, icon: const Icon(Icons.arrow_back,color: Colors.white,)),
-                      const SizedBox(width: 10,),
-                      const Text("Location",style: TextStyle(fontSize: 25,color: Colors.white),)
-                    ],
-                  ),
-                  SizedBox(height: 20,),
+                  const Text("Location",style: TextStyle(fontSize: 25,color: Colors.white),),
+                  const SizedBox(height: 20,),
                   Container(
+                    margin: const EdgeInsets.all(10),
                     height: MediaQuery.sizeOf(context).height*0.9,
                     width: MediaQuery.sizeOf(context).width*0.95,
                     decoration: BoxDecoration(color: Colors.white,borderRadius: BorderRadius.circular(10)),
@@ -61,12 +54,12 @@ class _LocationScreenState extends State<LocationScreen> {
                             Row(
                               children: [
                                 ClipRRect(borderRadius: BorderRadius.circular(5),child: Image.asset("${providerr!.locationList[index].img}",height: 50, width:50,fit: BoxFit.cover,)),
-                                SizedBox(width: 10,),
+                                const SizedBox(width: 10,),
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Text("${providerr!.locationList[index].name}",style: TextStyle(fontSize: 15),),
-                                    SizedBox(height:5),
+                                    Text("${providerr!.locationList[index].name}",style: const TextStyle(fontSize: 15),),
+                                    const SizedBox(height:5),
                                     Text("${providerr!.locationList[index].city}",style: TextStyle(color: Colors.grey.shade400),),
                                   ],
                                 ),

@@ -32,9 +32,9 @@ class _HomeScreenState extends State<HomeScreen> {
             Container(
               height: MediaQuery.sizeOf(context).height * 0.40,
               width: MediaQuery.sizeOf(context).width,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: Color(0xFF00B79B),
-                borderRadius: const BorderRadius.only(
+                borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(20),
                   bottomRight: Radius.circular(20),
                 ),
@@ -74,17 +74,15 @@ class _HomeScreenState extends State<HomeScreen> {
                         const Spacer(),
                         IconButton(
                             onPressed: () {
-                              Navigator.pushNamed(context, 'setting');
+                              Navigator.pushNamed(context, 'notification');
                             },
                             icon: const Icon(
-                              Icons.settings_outlined,
+                              Icons.notifications_none,
                               color: Colors.white,
                             ))
                       ],
                     ),
-                    const SizedBox(
-                      height: 10,
-                    ),
+                    const SizedBox(height: 10),
                     const SearchBar(
                       backgroundColor: MaterialStatePropertyAll(Colors.white),
                       leading: Icon(Icons.search),
@@ -93,10 +91,24 @@ class _HomeScreenState extends State<HomeScreen> {
                         Icon(Icons.tune),
                       ],
                     ),
-                    const SizedBox(
-                      height: 10,
-                    ),
+                    const SizedBox(height: 10),
+                    SingleChildScrollView(scrollDirection: Axis.horizontal,
+                      child: Row(
+                        children: [
+                          ElevatedButton(onPressed: (){
+                            Navigator.pushNamed(context, 'event');
+                          }, child: Text("All")),
+                          SizedBox(width: 5,),
+                          ElevatedButton(onPressed: (){}, child: Text("Music")),
+                          SizedBox(width: 5,),
+                          ElevatedButton(onPressed: (){}, child: Text("Art")),
+                          SizedBox(width: 5,),
+                          ElevatedButton(onPressed: (){}, child: Text("workshoop")),
 
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 10),
                     //first
                     InkWell(
                       onTap: () {
@@ -173,7 +185,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 onPressed: () {},
                                 style: ButtonStyle(
                                   backgroundColor: MaterialStateProperty.all(
-                                      Color(0xFF00B79B)),
+                                      const Color(0xFF00B79B)),
                                 ),
                                 child: const Text(
                                   "Light Mode",
@@ -187,7 +199,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 onPressed: () {},
                                 style: ButtonStyle(
                                   backgroundColor: MaterialStateProperty.all(
-                                      Color(0xFF00B79B)),
+                                      const Color(0xFF00B79B)),
                                 ),
                                 child: const Text(
                                   "Dark Mode",

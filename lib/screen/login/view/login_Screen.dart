@@ -76,7 +76,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     width: double.infinity,
                     child: ElevatedButton(
                       onPressed: () {
-                        Navigator.pushReplacementNamed(context, 'home');
+                        Navigator.pushReplacementNamed(context, 'dash');
                       },
                       child: const Text(
                         "Sign in",

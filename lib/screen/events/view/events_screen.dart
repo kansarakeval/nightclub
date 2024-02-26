@@ -39,7 +39,7 @@ class _EventsScreenState extends State<EventsScreen> {
                     Row(
                       children: [
                         IconButton(onPressed: (){
-                          Navigator.popUntil(context, ModalRoute.withName('home'));
+                          Navigator.pop(context);
                         }, icon: Icon(Icons.arrow_back,color: Colors.white,)),
                         SizedBox(width: 10,),
                         Text("Event",style: TextStyle(fontSize: 25,color: Colors.white),)
