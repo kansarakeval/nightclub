@@ -5,6 +5,7 @@ import 'package:nightclub/screen/home/view/home_screen.dart';
 import 'package:nightclub/screen/location/view/location_screen.dart';
 import 'package:nightclub/screen/notification/view/notification_screen.dart';
 import 'package:nightclub/screen/profile/view/profile_screeen.dart';
+import 'package:nightclub/screen/tickets/view/ticket_screen.dart';
 import 'package:provider/provider.dart';
 
 class DashScreen extends StatefulWidget {
@@ -19,7 +20,7 @@ class _DashScreenState extends State<DashScreen> {
     const HomeScreen(),
     const LocationScreen(),
     const BookEventScreen(),
-    const NotificationScreen(),
+    const TicketScreen(),
     const ProfileScreen(),
   ];
 
@@ -33,35 +34,35 @@ class _DashScreenState extends State<DashScreen> {
     return SafeArea(
       child: Scaffold(
         body: PageView(
-            controller: providerr!.pageController,
-            onPageChanged: (value) {
-              providerr!.changeIndedx(value);
-            },
-            children: screen,
-          ),
+          controller: providerr!.pageController,
+          onPageChanged: (value) {
+            providerr!.changeIndedx(value);
+          },
+          children: screen,
+        ),
         bottomNavigationBar: NavigationBar(
           indicatorColor: Color(0xFF00B79B),
-            selectedIndex: providerw!.screenIndex,
-            onDestinationSelected: (value) {
-              providerr!.pageController.animateToPage(value,
-                  duration: const Duration(milliseconds: 500),
-                  curve: Curves.easeIn);
-              providerr!.screenIndex = value;
-            },
-            destinations: const [
-              NavigationDestination(
-                  icon: Icon(Icons.home_outlined), label: "Home"),
-              NavigationDestination(
-                  icon: Icon(Icons.explore_outlined), label: "Explore"),
-              NavigationDestination(
-                  icon: Icon(Icons.favorite_border), label: "Favorites"),
-              NavigationDestination(
-                  icon: Icon(Icons.confirmation_num_outlined), label: "Tickets"),
-              NavigationDestination(
-                  icon: Icon(Icons.perm_identity_rounded), label: "Profile"),
-            ],
-            animationDuration: const Duration(microseconds: 1000),
-          ),
+          selectedIndex: providerw!.screenIndex,
+          onDestinationSelected: (value) {
+            providerr!.pageController.animateToPage(value,
+                duration: const Duration(milliseconds: 500),
+                curve: Curves.easeIn);
+            providerr!.screenIndex = value;
+          },
+          destinations: const [
+            NavigationDestination(
+                icon: Icon(Icons.home_outlined), label: "Home"),
+            NavigationDestination(
+                icon: Icon(Icons.explore_outlined), label: "Explore"),
+            NavigationDestination(
+                icon: Icon(Icons.favorite_border), label: "Favorites"),
+            NavigationDestination(
+                icon: Icon(Icons.confirmation_num_outlined), label: "Tickets"),
+            NavigationDestination(
+                icon: Icon(Icons.perm_identity_rounded), label: "Profile"),
+          ],
+          animationDuration: const Duration(microseconds: 1000),
+        ),
       ),
     );
   }

@@ -14,6 +14,10 @@ import 'package:nightclub/screen/pay/view/pay_screen.dart';
 import 'package:nightclub/screen/profile/view/profile_screeen.dart';
 import 'package:nightclub/screen/registration/view/registration_screen.dart';
 import 'package:nightclub/screen/splash/view/splash_screen.dart';
+import 'package:nightclub/screen/tickets/view/cancelled_screen.dart';
+import 'package:nightclub/screen/tickets/view/completed_screen.dart';
+import 'package:nightclub/screen/tickets/view/ticket_screen.dart';
+import 'package:nightclub/screen/tickets/view/upcoming_screen.dart';
 
 Map<String, WidgetBuilder> app_Routes = {
   '/': (context) => const SplashScreen(),
@@ -31,4 +35,8 @@ Map<String, WidgetBuilder> app_Routes = {
   'bookdetail':(context) => const BookingDetailScreen(),
   'pay':(context) => const PayScreen(),
   'notification': (context) => const NotificationScreen(),
+  'ticket':(context) => const TicketScreen(),
+  'upcoming':(context) => const UpcomingScreen(),
+  'completed':(context) => const CompletedScreen(),
+  'cancelled':(context) => const CancelledScreen(),
 };
