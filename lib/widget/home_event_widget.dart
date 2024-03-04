@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 
 class HomeEventContainer extends StatelessWidget {
-  String? img,title,text,des;
-  HomeEventContainer({super.key, this.img,this.title,this.text,this.des});
+  String? img, title, text, des;
+
+  HomeEventContainer({super.key, this.img, this.title, this.text, this.des});
 
   @override
   Widget build(BuildContext context) {
-    return   Container(
+    return Container(
       width: MediaQuery.sizeOf(context).width * 0.90,
-      height: MediaQuery.sizeOf(context).height*0.75,
+      height: MediaQuery.sizeOf(context).height * 0.75,
       padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
           color: Colors.white,
@@ -34,7 +35,12 @@ class HomeEventContainer extends StatelessWidget {
                     height: 230,
                     fit: BoxFit.cover,
                   ),
-                  IconButton(onPressed: (){}, icon: Icon(Icons.favorite_border,color: Colors.white,))
+                  IconButton(
+                      onPressed: () {},
+                      icon: Icon(
+                        Icons.favorite_border,
+                        color: Colors.white,
+                      ))
                 ],
               ),
             ),
@@ -44,8 +50,7 @@ class HomeEventContainer extends StatelessWidget {
           ),
           Text(
             title ?? "",
-            style: const TextStyle(
-                fontSize: 25, fontWeight: FontWeight.w500),
+            style: const TextStyle(fontSize: 25, fontWeight: FontWeight.w500),
           ),
           const SizedBox(
             height: 10,
@@ -144,8 +149,7 @@ class HomeEventContainer extends StatelessWidget {
                   Navigator.pushNamed(context, 'bookevent');
                 },
                 style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(
-                      Color(0xFF00B79B)),
+                  backgroundColor: MaterialStateProperty.all(Color(0xFF00B79B)),
                 ),
                 child: const Text(
                   "Book",
@@ -158,8 +162,7 @@ class HomeEventContainer extends StatelessWidget {
               ElevatedButton(
                 onPressed: () {},
                 style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(
-                      Color(0xFF00B79B)),
+                  backgroundColor: MaterialStateProperty.all(Color(0xFF00B79B)),
                 ),
                 child: const Text(
                   "Invite",
@@ -170,7 +173,6 @@ class HomeEventContainer extends StatelessWidget {
                 width: 10,
               ),
               const Text(
-
                 "View Gallery",
                 style: TextStyle(fontSize: 15),
               )
@@ -179,6 +181,5 @@ class HomeEventContainer extends StatelessWidget {
         ],
       ),
     );
-
   }
 }
