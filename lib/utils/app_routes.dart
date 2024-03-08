@@ -7,6 +7,7 @@ import 'package:nightclub/screen/events/view/events_screen.dart';
 import 'package:nightclub/screen/forget/view/forgetpassword_screen.dart';
 import 'package:nightclub/screen/home/view/home_screen.dart';
 import 'package:nightclub/screen/interests/view/interests_screen.dart';
+import 'package:nightclub/screen/like/view/like_screen.dart';
 import 'package:nightclub/screen/location/view/location_screen.dart';
 import 'package:nightclub/screen/login/view/login_Screen.dart';
 import 'package:nightclub/screen/notification/view/notification_screen.dart';
@@ -39,4 +40,5 @@ Map<String, WidgetBuilder> app_Routes = {
   'upcoming':(context) => const UpcomingScreen(),
   'completed':(context) => const CompletedScreen(),
   'cancelled':(context) => const CancelledScreen(),
+  'like': (context) => const LikeScreen(),
 };

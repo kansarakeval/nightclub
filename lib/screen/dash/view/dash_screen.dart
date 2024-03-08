@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:nightclub/screen/book%20event/view/book_event_screen.dart';
 import 'package:nightclub/screen/dash/provider/dash_provider.dart';
 import 'package:nightclub/screen/home/view/home_screen.dart';
+import 'package:nightclub/screen/like/view/like_screen.dart';
 import 'package:nightclub/screen/location/view/location_screen.dart';
 import 'package:nightclub/screen/profile/view/profile_screeen.dart';
 import 'package:nightclub/screen/tickets/view/ticket_screen.dart';
@@ -18,7 +19,7 @@ class _DashScreenState extends State<DashScreen> {
   List<Widget> screen = [
     const HomeScreen(),
     const LocationScreen(),
-    const BookEventScreen(),
+    const LikeScreen(),
     const TicketScreen(),
     const ProfileScreen(),
   ];
