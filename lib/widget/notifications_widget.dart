@@ -13,16 +13,16 @@ class NotificationWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Icon(icon ?? Icons.account_circle_outlined),
-          SizedBox(width: 10,),
+          const SizedBox(width: 10,),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(title ?? " ",style: TextStyle(fontSize: 20),),
+              Text(title ?? " ",style: const TextStyle(fontSize: 20),),
               Text(des ?? "",style: TextStyle(color: Colors.grey.shade400),),
             ],
           ),
-          Spacer(),
-          Text("1 day")
+          const Spacer(),
+          const Text("1 day")
         ],
       ),
     );

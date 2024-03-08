@@ -14,7 +14,7 @@ class PeopleWidget extends StatelessWidget {
         const SizedBox(height: 2,),
         Text(qualification ?? "",style: const TextStyle(fontSize: 15),),
         const SizedBox(height: 10,),
-        Row(
+        const Row(
           children: [
             Icon(
               Icons.star,
@@ -48,7 +48,7 @@ class PeopleWidget extends StatelessWidget {
           onPressed: () {},
           style: ButtonStyle(
             backgroundColor: MaterialStateProperty.all(
-                Color(0xFF00B79B)),
+                const Color(0xFF00B79B)),
           ),
           child: const Text(
             "Follow",

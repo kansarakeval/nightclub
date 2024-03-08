@@ -3,7 +3,6 @@ import 'package:nightclub/screen/book%20event/view/book_event_screen.dart';
 import 'package:nightclub/screen/dash/provider/dash_provider.dart';
 import 'package:nightclub/screen/home/view/home_screen.dart';
 import 'package:nightclub/screen/location/view/location_screen.dart';
-import 'package:nightclub/screen/notification/view/notification_screen.dart';
 import 'package:nightclub/screen/profile/view/profile_screeen.dart';
 import 'package:nightclub/screen/tickets/view/ticket_screen.dart';
 import 'package:provider/provider.dart';
@@ -41,7 +40,7 @@ class _DashScreenState extends State<DashScreen> {
           children: screen,
         ),
         bottomNavigationBar: NavigationBar(
-          indicatorColor: Color(0xFF00B79B),
+          indicatorColor: const Color(0xFF00B79B),
           selectedIndex: providerw!.screenIndex,
           onDestinationSelected: (value) {
             providerr!.pageController.animateToPage(value,

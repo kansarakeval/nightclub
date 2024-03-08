@@ -1,37 +1,80 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:nightclub/screen/home/provider/home_provider.dart';
-import 'package:nightclub/widget/home_event_widget.dart';
-import 'package:nightclub/widget/people_widget.dart';
-import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:nightclub/models/event.dart';
+import 'package:nightclub/services/api_call.dart';
+import '../../../models/cat.dart';
+import '../../../widget/home_event_widget.dart';
+import 'package:intl/intl.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+  const HomeScreen({Key? key}) : super(key: key);
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  HomeProvider? providerr;
-  HomeProvider? providerw;
+  late String name = '';
+  late String timeOfDay = '';
+
+  int? selectedCategoryId;
+
+  final Apicall api = Apicall();
+  late Future<List<Category>> _categoryFuture;
+
+  List<Event> eventlist = <Event>[];
+
+  @override
+  void initState() {
+    super.initState();
+    _categoryFuture = api.fetchCategories();
+    _loadData();
+    _loadList();
+  }
+
+  Future<void> _loadList() async {
+    try {
+      final events = await api.getEvent();
+      setState(() {
+        eventlist = events;
+      });
+    } catch (error) {
+      print('Error loading events: $error');
+    }
+  }
+
+  Future<void> _loadData() async {
+    int currentHour = DateTime.now().hour;
+    if (currentHour >= 5 && currentHour < 12) {
+      timeOfDay = 'Good Morning';
+    } else if (currentHour >= 12 && currentHour < 17) {
+      timeOfDay = 'Good Afternoon';
+    } else if (currentHour >= 17 && currentHour < 20) {
+      timeOfDay = 'Good Evening';
+    } else {
+      timeOfDay = 'Good Night';
+    }
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      name = prefs.getString('name') ?? '';
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    providerr = context.read<HomeProvider>();
-    providerw = context.watch<HomeProvider>();
     return SafeArea(
       child: Scaffold(
         body: Stack(
           children: [
             Container(
-              height: MediaQuery.sizeOf(context).height,
-              width: MediaQuery.sizeOf(context).width,
+              height: MediaQuery.of(context).size.height,
+              width: MediaQuery.of(context).size.width,
               color: Colors.white,
             ),
             Container(
-              height: MediaQuery.sizeOf(context).height * 0.40,
-              width: MediaQuery.sizeOf(context).width,
+              height: MediaQuery.of(context).size.height * 0.40,
+              width: MediaQuery.of(context).size.width,
               decoration: const BoxDecoration(
                 color: Color(0xFF00B79B),
                 borderRadius: BorderRadius.only(
@@ -42,284 +85,172 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             Padding(
               padding: const EdgeInsets.all(10),
-              child: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const CircleAvatar(
-                          radius: 30,
-                          backgroundColor: Colors.white,
-                          backgroundImage: AssetImage("assets/img/logo.png"),
-                        ),
-                        const SizedBox(
-                          width: 10,
-                        ),
-                        const Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "keval...!",
-                              style:
-                                  TextStyle(fontSize: 15, color: Colors.white),
-                            ),
-                            Text(
-                              "Good Morning",
-                              style:
-                                  TextStyle(fontSize: 20, color: Colors.white),
-                            ),
-                          ],
-                        ),
-                        const Spacer(),
-                        IconButton(
-                            onPressed: () {
-                              Navigator.pushNamed(context, 'notification');
-                            },
-                            icon: const Icon(
-                              Icons.notifications_none,
-                              color: Colors.white,
-                            ))
-                      ],
-                    ),
-                    const SizedBox(height: 10),
-                    const SearchBar(
-                      backgroundColor: MaterialStatePropertyAll(Colors.white),
-                      leading: Icon(Icons.search),
-                      hintText: "Search",
-                      trailing: [
-                        Icon(Icons.tune),
-                      ],
-                    ),
-                    const SizedBox(height: 10),
-                    SingleChildScrollView(scrollDirection: Axis.horizontal,
-                      child: Row(
+              child: Column(
+                children: [
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const CircleAvatar(
+                        radius: 30,
+                        backgroundColor: Colors.white,
+                        backgroundImage: AssetImage("assets/img/logo.png"),
+                      ),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          ElevatedButton(onPressed: (){
-                            Navigator.pushNamed(context, 'event');
-                          }, child: Text("All")),
-                          SizedBox(width: 5,),
-                          ElevatedButton(onPressed: (){}, child: Text("Music")),
-                          SizedBox(width: 5,),
-                          ElevatedButton(onPressed: (){}, child: Text("Art")),
-                          SizedBox(width: 5,),
-                          ElevatedButton(onPressed: (){}, child: Text("workshoop")),
-
+                          Text(
+                            timeOfDay,
+                            style: const TextStyle(
+                              fontSize: 12,
+                              color: Colors.white,
+                            ),
+                          ),
+                          Text(
+                            name,
+                            style: const TextStyle(
+                              fontSize: 23,
+                              color: Colors.white,
+                            ),
+                          ),
                         ],
                       ),
-                    ),
-                    const SizedBox(height: 10),
-                    //first
-                    InkWell(
-                      onTap: () {
-                        Navigator.pushNamed(context, 'eventdetail');
-                      },
-                      child: HomeEventContainer(
-                        img: "assets/img/singer1.jpg",
-                        title: "Lifestyle trends",
-                        text: "New York",
-                        des:
-                            "Someone who is not witly or sharp, but rather,\n they are ignorant unintelligent, or senseless.",
-                      ),
-                    ),
-                    const SizedBox(height: 10),
-
-                    //second
-                    HomeEventContainer(
-                      img: "assets/img/fun.jpg",
-                      title: "Fun and Comedy",
-                      text: "London",
-                      des:
-                          "To greatly frustrate someone. To drive\n someone crazy, insane, bonkers,or bananas.",
-                    ),
-                    const SizedBox(height: 10),
-
-                    //third
-                    HomeEventContainer(
-                      img: "assets/img/build.jpg",
-                      title: "Build Yourself",
-                      text: "Mumbai",
-                      des:
-                          "A person who does not speak a great deal,\n someone who talks with as few words as possible.",
-                    ),
-                    const SizedBox(height: 10),
-
-                    //theme
-                    Container(
-                      width: MediaQuery.sizeOf(context).width * 0.90,
-                      height: MediaQuery.sizeOf(context).height * 0.28,
-                      padding: const EdgeInsets.all(10),
-                      decoration: BoxDecoration(
+                      const Spacer(),
+                      IconButton(
+                        onPressed: () {
+                          Navigator.pushNamed(context, 'notification');
+                        },
+                        icon: const Icon(
+                          Icons.notifications_none,
                           color: Colors.white,
-                          boxShadow: const [
-                            BoxShadow(
-                              color: Colors.grey,
-                              spreadRadius: 0.2,
-                              blurRadius: 2,
-                            )
-                          ],
-                          borderRadius: BorderRadius.circular(5)),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          const Text("Light or Dark mode",
-                              style: TextStyle(
-                                  fontSize: 25, fontWeight: FontWeight.bold)),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          const Text(
-                            "This app comes can be used in light and dark\n mode as per your requirements",
-                            style: TextStyle(
-                              fontSize: 15,
-                            ),
-                            textAlign: TextAlign.center,
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
+                        ),
+                      )
+                    ],
+                  ),
+                  const SizedBox(height: 10),
+                  const SearchBar(
+                    backgroundColor: MaterialStatePropertyAll(Colors.white),
+                    leading: Icon(Icons.search),
+                    hintText: "Search",
+                    trailing: [
+                      Icon(Icons.tune),
+                    ],
+                  ),
+                  const SizedBox(height: 10),
+                  FutureBuilder<List<Category>>(
+                    future: _categoryFuture,
+                    builder: (context, snapshot) {
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return const Center(
+                          child: CircularProgressIndicator(),
+                        );
+                      } else if (snapshot.hasError) {
+                        return Center(
+                          child: Text('Error: ${snapshot.error}'),
+                        );
+                      } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
+                        return const Center(
+                          child: Text('No categories available'),
+                        );
+                      } else {
+                        return SingleChildScrollView(
+                          scrollDirection: Axis.horizontal,
+                          child: Row(
                             children: [
                               ElevatedButton(
-                                onPressed: () {},
-                                style: ButtonStyle(
-                                  backgroundColor: MaterialStateProperty.all(
-                                      const Color(0xFF00B79B)),
-                                ),
-                                child: const Text(
-                                  "Light Mode",
-                                  style: TextStyle(color: Colors.white),
-                                ),
+                                onPressed: () {
+                                  setState(() {
+                                    selectedCategoryId = null;
+                                  });
+                                },
+                                child: Text("All"),
                               ),
-                              const SizedBox(
-                                width: 10,
-                              ),
-                              ElevatedButton(
-                                onPressed: () {},
-                                style: ButtonStyle(
-                                  backgroundColor: MaterialStateProperty.all(
-                                      const Color(0xFF00B79B)),
-                                ),
-                                child: const Text(
-                                  "Dark Mode",
-                                  style: TextStyle(color: Colors.white),
-                                ),
-                              ),
+                              SizedBox(width: 5),
+                              ...snapshot.data!.map((category) {
+                                return Row(
+                                  children: [
+                                    ElevatedButton(
+                                      onPressed: () {
+                                        setState(() {
+                                          selectedCategoryId =
+                                              int.parse(category.cId);
+                                        });
+                                      },
+                                      child: Text(category.cName),
+                                    ),
+                                    const SizedBox(width: 5),
+                                  ],
+                                );
+                              }).toList(),
                             ],
-                          )
-                        ],
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-
-                    SizedBox(
-                      height: MediaQuery.sizeOf(context).height,
-                      child: MasonryGridView.builder(
-                        gridDelegate:
-                        const SliverSimpleGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 2),
-                        itemCount: providerr!.gridList.length,
-                        itemBuilder: (context, index) {
-                          return Container(
-                            margin: const EdgeInsets.all(5),
-                            decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(8)),
-                            child: Padding(
-                              padding: const EdgeInsets.all(10),
-                              child: Column(
-                                children: [
-                                  ClipRRect(
-                                    borderRadius: BorderRadius.circular(15),
-                                    child: Image.asset(
-                                        '${providerr!.gridList[index].img}'),
+                          ),
+                        );
+                      }
+                    },
+                  ),
+                  const SizedBox(height: 10),
+                  Expanded(
+                    child: SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.50,
+                      child: ListView.builder(
+                        itemCount: eventlist.length,
+                        itemBuilder: (BuildContext context, int index) {
+                          if (selectedCategoryId != null &&
+                              selectedCategoryId ==
+                                  int.parse(eventlist[index].c_id)) {
+                            return Column(
+                              children: [
+                                InkWell(
+                                  onTap: () {
+                                    Navigator.pushNamed(
+                                      context,
+                                      'eventdetail',
+                                      arguments: eventlist[index].e_id, // Pass event ID as an argument
+                                    );
+                                  },
+                                  child: HomeEventContainer(
+                                    img: "${Apicall.imgUrl}event/${eventlist[index].e_poster ?? ''}",
+                                    title: eventlist[index].e_name ?? '',
+                                    date: '${DateFormat.MMMd().format(DateTime.parse(eventlist[index].e_date))} - ${DateFormat('hh:mm a').format(DateFormat('HH:mm:ss').parse(eventlist[index].e_time))}' ??
+                                        '',
+                                    loc: '${eventlist[index].location},${eventlist[index].l_address}' ??
+                                        '',
                                   ),
-                                  Text(
-                                    '${providerr!.gridList[index].title}',
-                                    style: const TextStyle(
-                                        color: Colors.black, fontSize: 20,fontWeight: FontWeight.bold),
+                                ),
+                                const SizedBox(height: 10),
+                              ],
+                            );
+                          } else if (selectedCategoryId == null) {
+                            return Column(
+                              children: [
+                                InkWell(
+                                  onTap: () {
+                                    Navigator.pushNamed(
+                                      context,
+                                      'eventdetail',
+                                      arguments: eventlist[index].e_id, // Pass event ID as an argument
+                                    );
+                                  },
+                                  child: HomeEventContainer(
+                                    img: "${Apicall.imgUrl}event/${eventlist[index].e_poster ?? ''}",
+                                    title: eventlist[index].e_name ?? '',
+                                    date: '${DateFormat.MMMd().format(DateTime.parse(eventlist[index].e_date))} - ${DateFormat('hh:mm a').format(DateFormat('HH:mm:ss').parse(eventlist[index].e_time))}' ?? '',
+                                    loc: '${eventlist[index].location},${eventlist[index].l_address}' ?? '',
                                   ),
-                                  Text(
-                                    '${providerr!.gridList[index].events}',
-                                    style: const TextStyle(
-                                        color: Colors.black, fontSize: 15),
-                                  ),
-                                  const SizedBox(height: 10),
-                                  Text(
-                                    '${providerr!.gridList[index].des}',
-                                    style: const TextStyle(color: Colors.black),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          );
+                                ),
+                                const SizedBox(height: 10),
+                              ],
+                            );
+                          } else {
+                            return const SizedBox.shrink();
+                          }
                         },
                       ),
                     ),
-
-                    //people
-                    Container(
-                      width: MediaQuery.sizeOf(context).width * 0.90,
-                      height: MediaQuery.sizeOf(context).height * 0.45,
-                      padding: const EdgeInsets.all(10),
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          boxShadow: const [
-                            BoxShadow(
-                                color: Colors.grey,
-                                spreadRadius: 0.2,
-                                blurRadius: 2)
-                          ],
-                          borderRadius: BorderRadius.circular(5)),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          const Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                "People",
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 25),
-                              ),
-                              Text(
-                                "View All",
-                                style: TextStyle(fontSize: 15),
-                              )
-                            ],
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          SingleChildScrollView(
-                            scrollDirection: Axis.horizontal,
-                            child: Row(
-                              children: [
-                                PeopleWidget(
-                                    img: "assets/singerimg/3.png",
-                                    name: "Juliet Wykes",
-                                    qualification: "Senior Designer"),
-                                const SizedBox(width: 20),
-                                PeopleWidget(
-                                    img: "assets/singerimg/4.png",
-                                    name: "Dag Curner",
-                                    qualification: "Manager"),
-                                const SizedBox(width: 20),
-                                PeopleWidget(
-                                    img: "assets/singerimg/9.png",
-                                    name: "Grove stark",
-                                    qualification: "Ux/Manager"),
-                              ],
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
           ],

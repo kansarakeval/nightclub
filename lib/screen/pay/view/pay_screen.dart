@@ -22,9 +22,9 @@ class _PayScreenState extends State<PayScreen> {
             Container(
               height: MediaQuery.sizeOf(context).height * 0.40,
               width: MediaQuery.sizeOf(context).width,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: Color(0xFF00B79B),
-                borderRadius: const BorderRadius.only(
+                borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(20),
                   bottomRight: Radius.circular(20),
                 ),
@@ -213,7 +213,7 @@ class _PayScreenState extends State<PayScreen> {
                       const SizedBox(height: 10,),
                       SizedBox(width: double.infinity,child: ElevatedButton(onPressed: () {
                         Navigator.popUntil(context, ModalRoute.withName('home'));
-                      }, child: Text("pay Now")))
+                      }, child: const Text("pay Now")))
                     ],
                   ),
                 )
