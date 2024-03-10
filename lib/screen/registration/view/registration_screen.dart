@@ -19,11 +19,11 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   final _uemailController = TextEditingController();
   final _upswController = TextEditingController();
 
-  TextEditingController nameController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
+  // TextEditingController nameController = TextEditingController();
+  // TextEditingController passwordController = TextEditingController();
 
   void showmsg() {
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
       content: Text("Snackbar appears at botton Sending Message",
           style: TextStyle(
             color: Color(0xFFFFFFFF),
@@ -39,16 +39,16 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
     // );
   }
 
-  final dateController = TextEditingController();
+  // final dateController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     //GlobalKey<CSCPickerState> _cscPickerKey = GlobalKey();
-    GlobalKey<FormState> _formKey = GlobalKey();
+    GlobalKey<FormState> formKey = GlobalKey();
 
-    final GlobalKey<FormState> _form = GlobalKey<FormState>();
-    final TextEditingController _pass = TextEditingController();
-    final TextEditingController _confirmPass = TextEditingController();
+    final GlobalKey<FormState> form = GlobalKey<FormState>();
+    final TextEditingController pass = TextEditingController();
+    final TextEditingController confirmPass = TextEditingController();
 
     return SafeArea(
       child: Scaffold(
@@ -60,8 +60,8 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   GifView.asset("assets/img/Sign up.gif",height: 200,width: 200,),
-                  SizedBox(height: 5,),
-                  Text(
+                  const SizedBox(height: 5,),
+                  const Text(
                     "Create New Account",
                     style: TextStyle(
                         fontSize: 25,
@@ -74,7 +74,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   TextField(
                     controller: _unameController,
                     keyboardType: TextInputType.text,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                         border: OutlineInputBorder(),
                         prefixIcon: Icon(Icons.person),
                         labelText: "User Name"),
@@ -85,7 +85,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   TextField(
                     controller: _uemailController,
                     keyboardType: TextInputType.emailAddress,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       border: OutlineInputBorder(),
                       prefixIcon: Icon(Icons.email),
                       labelText: "Email",
@@ -98,7 +98,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   TextField(
                     controller: _ucontactnoController,
                     keyboardType: TextInputType.phone,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                         border: OutlineInputBorder(),
                         prefixIcon: Icon(Icons.phone),
                         labelText: "Phone No."),
@@ -109,7 +109,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   TextField(
                     controller: _upswController,
                     obscureText: true,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       border: OutlineInputBorder(),
                       prefixIcon: Icon(Icons.password),
                       labelText: "Password",
@@ -121,7 +121,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   ),
                   TextFormField(
                       obscureText: true,
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         border: OutlineInputBorder(),
                         prefixIcon: Icon(Icons.password),
                         labelText: 'Confirm Password',
@@ -136,7 +136,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                       ),
                       validator: (val) {
                         if (val!.isEmpty) return 'Empty';
-                        if (val != _pass.text) return 'Not Match';
+                        if (val != pass.text) return 'Not Match';
                         return null;
                       }),
                   const SizedBox(
@@ -211,7 +211,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                           onTap: () {
                             Navigator.pop(context);
                           },
-                          child: Text(
+                          child: const Text(
                             "Sign in",
                             style: TextStyle(color: Color(0xFF00B79B)),
                           )),

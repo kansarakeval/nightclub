@@ -23,9 +23,9 @@ class _NotificationScreenState extends State<NotificationScreen> {
             Container(
               height: MediaQuery.sizeOf(context).height * 0.40,
               width: MediaQuery.sizeOf(context).width,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: Color(0xFF00B79B),
-                borderRadius: const BorderRadius.only(
+                borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(20),
                   bottomRight: Radius.circular(20),
                 ),
@@ -70,9 +70,9 @@ class _NotificationScreenState extends State<NotificationScreen> {
                   child: Column(
                     children: [
                       NotificationWidget(icon: Icons.discount, title: "50% Discount", des: "one parson"),
-                      Divider(),
+                      const Divider(),
                       NotificationWidget(icon: Icons.discount, title: "Discount", des: "2 by 1 free"),
-                      Divider(),
+                      const Divider(),
                       NotificationWidget(icon: Icons.discount, title: "50% Discount", des: "one parson"),
                     ],
                   ),

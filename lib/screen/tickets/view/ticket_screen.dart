@@ -23,7 +23,7 @@ class _TicketScreenState extends State<TicketScreen> {
               style: TextStyle(fontSize: 25, color: Colors.white,),
             ),
             centerTitle: true,
-            backgroundColor: Color(0xFF00B79B),
+            backgroundColor: const Color(0xFF00B79B),
             bottom:  const TabBar(
               labelColor: Colors.white,
               unselectedLabelColor: Colors.white,

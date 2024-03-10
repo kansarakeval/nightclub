@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:nightclub/screen/location/provider/location_provider.dart';
 import 'package:provider/provider.dart';
 
+import '../../../models/city.dart';
+import '../../../services/api_call.dart';
+
 class LocationScreen extends StatefulWidget {
-  const LocationScreen({super.key});
+  const LocationScreen({Key? key}) : super(key: key);
 
   @override
   State<LocationScreen> createState() => _LocationScreenState();
@@ -12,22 +15,42 @@ class LocationScreen extends StatefulWidget {
 class _LocationScreenState extends State<LocationScreen> {
   LocationProvider? providerr;
   LocationProvider? providerw;
+  final Apicall api = Apicall();
+  List<City> citylist = <City>[];
+
+  @override
+  void initState() {
+    super.initState();
+    _loadList();
+  }
+
+  Future<void> _loadList() async {
+    try {
+      final events = await api.fetchCities();
+      setState(() {
+        citylist = events;
+      });
+    } catch (error) {
+      print('Error loading events: $error');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     providerr = context.read<LocationProvider>();
-    providerw = context.watch<LocationProvider>();
+    providerw = Provider.of<LocationProvider>(context);
     return SafeArea(
       child: Scaffold(
         body: Stack(
           children: [
             Container(
-              height: MediaQuery.sizeOf(context).height,
-              width: MediaQuery.sizeOf(context).width,
+              height: MediaQuery.of(context).size.height,
+              width: MediaQuery.of(context).size.width,
               color: Colors.white,
             ),
             Container(
-              height: MediaQuery.sizeOf(context).height * 0.40,
-              width: MediaQuery.sizeOf(context).width,
+              height: MediaQuery.of(context).size.height * 0.40,
+              width: MediaQuery.of(context).size.width,
               decoration: const BoxDecoration(
                 color: Color(0xFF00B79B),
                 borderRadius: BorderRadius.only(
@@ -39,39 +62,49 @@ class _LocationScreenState extends State<LocationScreen> {
             SingleChildScrollView(
               child: Column(
                 children: [
-                  const Text("Location",style: TextStyle(fontSize: 25,color: Colors.white),),
+                  const SizedBox(height: 15,),
+                  const Text("Search By City",style: TextStyle(fontSize: 25,color: Colors.white),),
                   const SizedBox(height: 20,),
                   Container(
                     margin: const EdgeInsets.all(10),
-                    height: MediaQuery.sizeOf(context).height*0.9,
-                    width: MediaQuery.sizeOf(context).width*0.95,
+                    height: MediaQuery.of(context).size.height*0.9,
+                    width: MediaQuery.of(context).size.width*0.95,
                     decoration: BoxDecoration(color: Colors.white,borderRadius: BorderRadius.circular(10)),
-                    child: ListView.builder(itemCount: providerr!.locationList.length,itemBuilder: (context, index) {
-                      return Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Column(
-                          children: [
-                            Row(
-                              children: [
-                                ClipRRect(borderRadius: BorderRadius.circular(5),child: Image.asset("${providerr!.locationList[index].img}",height: 50, width:50,fit: BoxFit.cover,)),
-                                const SizedBox(width: 10,),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text("${providerr!.locationList[index].name}",style: const TextStyle(fontSize: 15),),
-                                    const SizedBox(height:5),
-                                    Text("${providerr!.locationList[index].city}",style: TextStyle(color: Colors.grey.shade400),),
-                                  ],
-                                ),
-                              ],
-                            ),
-                            Divider( color: Colors.grey.shade300,),
-                          ],
-                        ),
-                      );
-
-                    },
-
+                    child: ListView.builder(
+                      itemCount: citylist.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        return Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Column(
+                            children: [
+                              Row(
+                                children: [
+                                  // ClipRRect(borderRadius: BorderRadius.circular(5),child: Image.asset("${providerr!.locationList[index].img}",height: 50, width:50,fit: BoxFit.cover,)),
+                                  const SizedBox(width: 10,),
+                                  InkWell(
+                                    onTap: () {
+                                      Navigator.pushNamed(
+                                        context,
+                                        'event',
+                                        arguments: citylist[index].cityName, // Pass event ID as an argument
+                                      );
+                                    },
+                                    child: Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Text(citylist[index].cityName ?? '', style: const TextStyle(fontSize: 15),),
+                                        const SizedBox(height: 5),
+                                        Text(citylist[index].stateName ?? '', style: TextStyle(color: Colors.grey.shade400),),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Divider(color: Colors.grey.shade300,),
+                            ],
+                          ),
+                        );
+                      },
                     ),
                   )
                 ],
