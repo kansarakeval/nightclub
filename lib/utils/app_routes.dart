@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nightclub/screen/book%20event/view/book_event_screen.dart';
 import 'package:nightclub/screen/booking%20detail/view/booking_detail_screen.dart';
+import 'package:nightclub/screen/cancel%20booking/view/cancel_booking_screen.dart';
 import 'package:nightclub/screen/dash/view/dash_screen.dart';
 import 'package:nightclub/screen/eventdetail/view/event_detail_screen.dart';
 import 'package:nightclub/screen/events/view/events_screen.dart';
@@ -13,6 +14,7 @@ import 'package:nightclub/screen/login/view/login_Screen.dart';
 import 'package:nightclub/screen/notification/view/notification_screen.dart';
 import 'package:nightclub/screen/pay/view/pay_screen.dart';
 import 'package:nightclub/screen/profile/view/profile_screeen.dart';
+import 'package:nightclub/screen/profileDetails/view/profile_page_screen.dart';
 import 'package:nightclub/screen/registration/view/registration_screen.dart';
 import 'package:nightclub/screen/splash/view/splash_screen.dart';
 import 'package:nightclub/screen/tickets/view/cancelled_screen.dart';
@@ -41,4 +43,6 @@ Map<String, WidgetBuilder> app_Routes = {
   'completed':(context) => const CompletedScreen(),
   'cancelled':(context) => const CancelledScreen(),
   'like': (context) => const LikeScreen(),
+  'profilepage':(context) => const ProfilePageScreen(),
+  'cancel':(context) => const CancelBookingScreen(),
 };
