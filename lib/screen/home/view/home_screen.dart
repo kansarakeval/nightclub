@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:nightclub/models/event.dart';
@@ -8,21 +7,21 @@ import '../../../widget/home_event_widget.dart';
 import 'package:intl/intl.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+  const HomeScreen({super.key});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  late String name = '';
-  late String timeOfDay = '';
 
+  late String name = '';
+  late String uID = '';
+  late String timeOfDay = '';
   int? selectedCategoryId;
 
   final Apicall api = Apicall();
   late Future<List<Category>> _categoryFuture;
-
   List<Event> eventlist = <Event>[];
 
   @override
@@ -30,18 +29,6 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
     _categoryFuture = api.fetchCategories();
     _loadData();
-    _loadList();
-  }
-
-  Future<void> _loadList() async {
-    try {
-      final events = await api.getEvent();
-      setState(() {
-        eventlist = events;
-      });
-    } catch (error) {
-      print('Error loading events: $error');
-    }
   }
 
   Future<void> _loadData() async {
@@ -58,7 +45,20 @@ class _HomeScreenState extends State<HomeScreen> {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
       name = prefs.getString('name') ?? '';
+      uID = prefs.getString('uID') ?? '';
     });
+    await _loadList();
+  }
+
+  Future<void> _loadList() async {
+    try {
+      final events = await api.getEvent(uID);
+      setState(() {
+        eventlist = events;
+      });
+    } catch (error) {
+        print('Error loading events: $error');
+    }
   }
 
   @override
@@ -130,6 +130,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ],
                   ),
                   const SizedBox(height: 10),
+
                   const SearchBar(
                     backgroundColor: MaterialStatePropertyAll(Colors.white),
                     leading: Icon(Icons.search),
@@ -139,6 +140,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ],
                   ),
                   const SizedBox(height: 10),
+
                   FutureBuilder<List<Category>>(
                     future: _categoryFuture,
                     builder: (context, snapshot) {
@@ -165,9 +167,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                     selectedCategoryId = null;
                                   });
                                 },
-                                child: Text("All"),
+                                child: const Text("All"),
                               ),
-                              SizedBox(width: 5),
+                              const SizedBox(width: 5),
                               ...snapshot.data!.map((category) {
                                 return Row(
                                   children: [
@@ -183,7 +185,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     const SizedBox(width: 5),
                                   ],
                                 );
-                              }).toList(),
+                              }),
                             ],
                           ),
                         );
@@ -191,6 +193,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     },
                   ),
                   const SizedBox(height: 10),
+
                   Expanded(
                     child: SizedBox(
                       height: MediaQuery.of(context).size.height * 0.50,
@@ -211,15 +214,16 @@ class _HomeScreenState extends State<HomeScreen> {
                                     );
                                   },
                                   child: HomeEventContainer(
-                                    img: "${Apicall.imgUrl}event/${eventlist[index].e_poster ?? ''}",
-                                    title: eventlist[index].e_name ?? '',
-                                    date: '${DateFormat.MMMd().format(DateTime.parse(eventlist[index].e_date))} - ${DateFormat('hh:mm a').format(DateFormat('HH:mm:ss').parse(eventlist[index].e_time))}' ??
-                                        '',
-                                    loc: '${eventlist[index].location},${eventlist[index].l_address}' ??
-                                        '',
+                                    img: "${Apicall.imgUrl}event/${eventlist[index].e_poster}",
+                                    title: eventlist[index].e_name,
+                                    date: '${DateFormat('E, MMM dd').format(DateTime.parse(eventlist[index].e_date))} - ${DateFormat('hh:mm a').format(DateFormat('HH:mm:ss').parse(eventlist[index].e_time))}',
+                                    loc: '${eventlist[index].location},${eventlist[index].l_address}',
+                                    eid: eventlist[index].e_id,
+                                    wis:eventlist[index].in_wishlist,
+                                    api: api,
                                   ),
                                 ),
-                                const SizedBox(height: 10),
+                                const SizedBox(height: 20),
                               ],
                             );
                           } else if (selectedCategoryId == null) {
@@ -234,13 +238,16 @@ class _HomeScreenState extends State<HomeScreen> {
                                     );
                                   },
                                   child: HomeEventContainer(
-                                    img: "${Apicall.imgUrl}event/${eventlist[index].e_poster ?? ''}",
-                                    title: eventlist[index].e_name ?? '',
-                                    date: '${DateFormat.MMMd().format(DateTime.parse(eventlist[index].e_date))} - ${DateFormat('hh:mm a').format(DateFormat('HH:mm:ss').parse(eventlist[index].e_time))}' ?? '',
-                                    loc: '${eventlist[index].location},${eventlist[index].l_address}' ?? '',
+                                    img: "${Apicall.imgUrl}event/${eventlist[index].e_poster}",
+                                    title: eventlist[index].e_name,
+                                    date: '${DateFormat('E, MMM dd').format(DateTime.parse(eventlist[index].e_date))} - ${DateFormat('hh:mm a').format(DateFormat('HH:mm:ss').parse(eventlist[index].e_time))}',
+                                    loc: '${eventlist[index].location},${eventlist[index].l_address}',
+                                    eid: eventlist[index].e_id,
+                                    wis:eventlist[index].in_wishlist,
+                                    api: api,
                                   ),
                                 ),
-                                const SizedBox(height: 10),
+                                const SizedBox(height: 20),
                               ],
                             );
                           } else {

@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:nightclub/screen/location/provider/location_provider.dart';
 import 'package:provider/provider.dart';
@@ -6,7 +7,7 @@ import '../../../models/city.dart';
 import '../../../services/api_call.dart';
 
 class LocationScreen extends StatefulWidget {
-  const LocationScreen({Key? key}) : super(key: key);
+  const LocationScreen({super.key});
 
   @override
   State<LocationScreen> createState() => _LocationScreenState();
@@ -31,7 +32,9 @@ class _LocationScreenState extends State<LocationScreen> {
         citylist = events;
       });
     } catch (error) {
-      print('Error loading events: $error');
+      if (kDebugMode) {
+        print('Error loading events: $error');
+      }
     }
   }
 
@@ -62,12 +65,12 @@ class _LocationScreenState extends State<LocationScreen> {
             SingleChildScrollView(
               child: Column(
                 children: [
-                  const SizedBox(height: 15,),
+                  const SizedBox(height: 15),
                   const Text("Search By City",style: TextStyle(fontSize: 25,color: Colors.white),),
                   const SizedBox(height: 20,),
                   Container(
                     margin: const EdgeInsets.all(10),
-                    height: MediaQuery.of(context).size.height*0.9,
+                    height: MediaQuery.of(context).size.height*0.8,
                     width: MediaQuery.of(context).size.width*0.95,
                     decoration: BoxDecoration(color: Colors.white,borderRadius: BorderRadius.circular(10)),
                     child: ListView.builder(
@@ -86,15 +89,15 @@ class _LocationScreenState extends State<LocationScreen> {
                                       Navigator.pushNamed(
                                         context,
                                         'event',
-                                        arguments: citylist[index].cityName, // Pass event ID as an argument
+                                        arguments: "${citylist[index].stateName},${citylist[index].cityName}", // Pass event ID as an argument
                                       );
                                     },
                                     child: Column(
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
-                                        Text(citylist[index].cityName ?? '', style: const TextStyle(fontSize: 15),),
+                                        Text(citylist[index].cityName, style: const TextStyle(fontSize: 15),),
                                         const SizedBox(height: 5),
-                                        Text(citylist[index].stateName ?? '', style: TextStyle(color: Colors.grey.shade400),),
+                                        Text(citylist[index].stateName, style: TextStyle(color: Colors.grey.shade400),),
                                       ],
                                     ),
                                   ),

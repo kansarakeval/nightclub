@@ -212,7 +212,11 @@ class _PayScreenState extends State<PayScreen> {
                       ),
                       const SizedBox(height: 10,),
                       SizedBox(width: double.infinity,child: ElevatedButton(onPressed: () {
-                        Navigator.popUntil(context, ModalRoute.withName('home'));
+                        // Navigator.popUntil(context, ModalRoute.withName('bookdetail'));
+                        Navigator.pushNamed(
+                          context,
+                          'bookdetail', // Pass event ID as an argument
+                        );
                       }, child: const Text("pay Now")))
                     ],
                   ),

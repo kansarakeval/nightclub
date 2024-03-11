@@ -5,7 +5,7 @@ import 'package:nightclub/models/login.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginScreen extends StatefulWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+  const LoginScreen({super.key});
 
   @override
   State<LoginScreen> createState() => _LoginScreenState();
@@ -13,10 +13,10 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   final Apicall api = Apicall();
-  final _addFormKey = GlobalKey<FormState>();
 
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
+  String _errorText = '';
 
   @override
   void initState() {
@@ -67,7 +67,17 @@ class _LoginScreenState extends State<LoginScreen> {
                       hintText: "Email",
                     ),
                   ),
-                  const SizedBox(height: 20),
+                  if (_errorText.isNotEmpty)
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        _errorText,
+                        style: const TextStyle(
+                          color: Colors.red,
+                        ),
+                      ),
+                    ),
+                  const SizedBox(height: 10),
                   TextField(
                     controller: _passwordController,
                     keyboardType: TextInputType.visiblePassword,
@@ -113,14 +123,9 @@ class _LoginScreenState extends State<LoginScreen> {
                             await prefs.setString("email", email);
                             Navigator.pushReplacementNamed(context, 'dash');
                           } else {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(
-                                content: Text(
-                                  "Invalid Email Or Password",
-                                ),
-                                duration: Duration(seconds: 5),
-                              ),
-                            );
+                            setState(() {
+                              _errorText = '*Email Address and Password Check';
+                            });
                           }
                         });
                       },
@@ -131,37 +136,6 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       ),
                     ),
-                  ),
-                  const SizedBox(height: 20),
-                  const Text(
-                    "or continue with",
-                    style: TextStyle(fontSize: 15, color: Colors.grey),
-                  ),
-                  const SizedBox(height: 20),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Image.asset(
-                        "assets/img/facebook.png",
-                        fit: BoxFit.cover,
-                        height: 30,
-                        width: 30,
-                      ),
-                      const SizedBox(width: 30),
-                      Image.asset(
-                        "assets/img/google.png",
-                        fit: BoxFit.cover,
-                        height: 30,
-                        width: 30,
-                      ),
-                      const SizedBox(width: 30),
-                      Image.asset(
-                        "assets/img/apple.png",
-                        fit: BoxFit.cover,
-                        height: 30,
-                        width: 30,
-                      ),
-                    ],
                   ),
                   const SizedBox(height: 20),
                   Row(

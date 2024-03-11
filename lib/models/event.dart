@@ -15,6 +15,7 @@ class Event {
   final String location;
   final String l_address;
   final String l_link;
+  final String in_wishlist;
 
   Event(
       {this.e_id = "",
@@ -32,7 +33,8 @@ class Event {
       this.a_seat = "",
       this.location = "",
       this.l_address = "",
-      this.l_link = ""
+      this.l_link = "",
+      this.in_wishlist="",
       });
 
   factory Event.fromJson(Map<String, dynamic> json) {
@@ -53,11 +55,12 @@ class Event {
       location: json['location']?.toString() ?? '', // Handle null value for 'location'
       l_address: json['l_address']?.toString() ?? '', // Handle null value for 'l_address'
       l_link: json['l_link']?.toString() ?? '', // Handle null value for 'l_link'
+      in_wishlist:json['in_wishlist'].toString(),
     );
   }
 
   @override
   String toString() {
-    return 'Trans{e_id:$e_id,e_poster:$e_poster,e_name:$e_name,e_speaker:$e_speaker,e_date:$e_date,e_time:$e_time,e_info:$e_info,c_id:$c_id,o_id:$o_id,l_id:$l_id,f_price:$f_price,f_seat:$f_seat,a_seat:$a_seat,location:$location,l_address:$l_address,l_link:$l_link	}';
+    return 'Event{e_id: $e_id, e_poster: $e_poster, e_name: $e_name, e_speaker: $e_speaker, e_date: $e_date, e_time: $e_time, e_info: $e_info, c_id: $c_id, o_id: $o_id, l_id: $l_id, f_price: $f_price, f_seat: $f_seat, a_seat: $a_seat, location: $location, l_address: $l_address, l_link: $l_link, in_wishlist: $in_wishlist}';
   }
 }

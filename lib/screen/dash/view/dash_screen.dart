@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:nightclub/screen/book%20event/view/book_event_screen.dart';
 import 'package:nightclub/screen/dash/provider/dash_provider.dart';
 import 'package:nightclub/screen/home/view/home_screen.dart';
 import 'package:nightclub/screen/like/view/like_screen.dart';
