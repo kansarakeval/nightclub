@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 
 class ProfileScreen extends StatefulWidget {
-  const ProfileScreen({super.key});
+  const ProfileScreen({Key? key}) : super(key: key);
 
   @override
   State<ProfileScreen> createState() => _ProfileScreenState();
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
+  bool isDarkThemeEnabled = false; // Assuming dark theme is initially disabled
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -15,8 +17,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
         body: Column(
           children: [
             Container(
-              height: MediaQuery.sizeOf(context).height * 0.30,
-              width: MediaQuery.sizeOf(context).width,
+              height: MediaQuery.of(context).size.height * 0.30,
+              width: MediaQuery.of(context).size.width,
               decoration: const BoxDecoration(
                 color: Color(0xFF00B79B),
               ),
@@ -24,20 +26,22 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 children: [
                   const SizedBox(height: 20),
                   ClipRRect(
-                      borderRadius: BorderRadius.circular(10),
-                      child: Image.asset(
-                        "assets/img/keval.png",
-                        height: 120,
-                      )),
+                    borderRadius: BorderRadius.circular(10),
+                    child: Image.asset(
+                      "assets/img/keval.png",
+                      height: 120,
+                    ),
+                  ),
                   const SizedBox(
                     height: 10,
                   ),
                   const Text(
                     "Keval Kansara",
                     style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white),
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
                   ),
                   const SizedBox(
                     height: 2,
@@ -52,6 +56,19 @@ class _ProfileScreenState extends State<ProfileScreen> {
             Expanded(
               child: ListView(
                 children: [
+                  ListTile(
+                    leading: const Icon(Icons.account_circle_outlined),
+                    title: const Text(
+                      "User Profile",
+                      style: TextStyle(fontSize: 18),
+                    ),
+                    trailing: IconButton(
+                      onPressed: () {
+                        Navigator.pushNamed(context, 'profilepage');
+                      },
+                      icon: const Icon(Icons.navigate_next),
+                    ),
+                  ),
                   ListTile(
                     leading: const Icon(Icons.event),
                     title: const Text(
@@ -92,29 +109,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     ),
                   ),
                   ListTile(
-                    leading: const Icon(Icons.qr_code_outlined),
-                    title: const Text(
-                      "Tickets",
-                      style: TextStyle(fontSize: 18),
-                    ),
-                    trailing: IconButton(
-                      onPressed: () {},
-                      icon: const Icon(Icons.navigate_next),
-                    ),
-                  ),
-                  ListTile(
-                    leading: const Icon(Icons.reviews_outlined),
-                    title: const Text(
-                      "Reviews",
-                      style: TextStyle(fontSize: 18),
-                    ),
-                    trailing: IconButton(
-                      onPressed: () {},
-                      icon: const Icon(Icons.navigate_next),
-                    ),
-                  ),
-                  ListTile(
-                    leading: const Icon(Icons.notifications_active_outlined),
+                    leading:
+                    const Icon(Icons.notifications_active_outlined),
                     title: const Text(
                       "Notifications",
                       style: TextStyle(fontSize: 18),
@@ -127,145 +123,45 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     ),
                   ),
                   ListTile(
-                    leading: const Icon(Icons.account_circle_outlined),
+                    leading: const Icon(Icons.dark_mode_outlined),
                     title: const Text(
-                      "User Profile",
+                      "Dark Theme",
                       style: TextStyle(fontSize: 18),
                     ),
-                    trailing: IconButton(
-                      onPressed: () {},
-                      icon: const Icon(Icons.navigate_next),
+                    trailing: Switch(
+                      value: isDarkThemeEnabled,
+                      onChanged: (value) {
+                        setState(() {
+                          isDarkThemeEnabled = value;
+                        });
+                      },
                     ),
                   ),
                   ListTile(
-                    leading: const Icon(Icons.group_outlined),
-                    title: const Text(
-                      "users",
-                      style: TextStyle(fontSize: 18),
+                    leading: const Icon(
+                      Icons.login,
+                      color: Colors.red,
                     ),
-                    trailing: IconButton(
-                      onPressed: () {},
-                      icon: const Icon(Icons.navigate_next),
-                    ),
-                  ),
-                  ListTile(
-                    leading: const Icon(Icons.messenger_outline),
-                    title: const Text(
-                      "Messages",
-                      style: TextStyle(fontSize: 18),
-                    ),
-                    trailing: IconButton(
-                      onPressed: () {},
-                      icon: const Icon(Icons.navigate_next),
-                    ),
-                  ),
-                  ListTile(
-                    leading: const Icon(Icons.person_pin_outlined),
-                    title: const Text(
-                      "Followers",
-                      style: TextStyle(fontSize: 18),
-                    ),
-                    trailing: IconButton(
-                      onPressed: () {},
-                      icon: const Icon(Icons.navigate_next),
-                    ),
-                  ),
-                  ListTile(
-                    leading: const Icon(Icons.help_outline),
-                    title: const Text(
-                      "Frequently Asked\n Question(Faq)",
-                      style: TextStyle(fontSize: 18),
-                    ),
-                    trailing: IconButton(
-                      onPressed: () {},
-                      icon: const Icon(Icons.navigate_next),
-                    ),
-                  ),
-                  ListTile(
-                    leading: const Icon(Icons.manage_accounts_outlined),
-                    title: const Text(
-                      "Edit profile",
-                      style: TextStyle(fontSize: 18),
-                    ),
-                    trailing: IconButton(
-                      onPressed: () {},
-                      icon: const Icon(Icons.navigate_next),
-                    ),
-                  ),
-                  ListTile(
-                    leading: const Icon(Icons.home_outlined),
-                    title: const Text(
-                      "Welcome",
-                      style: TextStyle(fontSize: 18),
-                    ),
-                    trailing: IconButton(
-                      onPressed: () {},
-                      icon: const Icon(Icons.navigate_next),
-                    ),
-                  ),
-                  ListTile(
-                    leading: const Icon(Icons.login),
                     title: const Text(
                       "Login",
                       style: TextStyle(fontSize: 18),
                     ),
                     trailing: IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushReplacementNamed(context, 'login');
+                      },
                       icon: const Icon(Icons.navigate_next),
                     ),
                   ),
                   ListTile(
-                    leading: const Icon(Icons.how_to_reg),
                     title: const Text(
-                      "Register",
+                      "Cancel Booking",
                       style: TextStyle(fontSize: 18),
                     ),
                     trailing: IconButton(
-                      onPressed: () {},
-                      icon: const Icon(Icons.navigate_next),
-                    ),
-                  ),
-                  ListTile(
-                    leading: const Icon(Icons.smartphone),
-                    title: const Text(
-                      "Enter mobile number",
-                      style: TextStyle(fontSize: 18),
-                    ),
-                    trailing: IconButton(
-                      onPressed: () {},
-                      icon: const Icon(Icons.navigate_next),
-                    ),
-                  ),
-                  ListTile(
-                    leading: const Icon(Icons.dialpad),
-                    title: const Text(
-                      "Enter OTP",
-                      style: TextStyle(fontSize: 18),
-                    ),
-                    trailing: IconButton(
-                      onPressed: () {},
-                      icon: const Icon(Icons.navigate_next),
-                    ),
-                  ),
-                  ListTile(
-                    leading: const Icon(Icons.policy_outlined),
-                    title: const Text(
-                      "Terms & Conditions",
-                      style: TextStyle(fontSize: 18),
-                    ),
-                    trailing: IconButton(
-                      onPressed: () {},
-                      icon: const Icon(Icons.navigate_next),
-                    ),
-                  ),
-                  ListTile(
-                    leading: const Icon(Icons.verified_user_outlined),
-                    title: const Text(
-                      "Privacy Policy",
-                      style: TextStyle(fontSize: 18),
-                    ),
-                    trailing: IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushNamed(context, 'cancel');
+                      },
                       icon: const Icon(Icons.navigate_next),
                     ),
                   ),
@@ -278,4 +174,3 @@ class _ProfileScreenState extends State<ProfileScreen> {
     );
   }
 }
-
