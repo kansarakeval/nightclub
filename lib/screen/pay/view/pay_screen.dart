@@ -1,4 +1,6 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:pay/pay.dart';
 
 class PayScreen extends StatefulWidget {
   const PayScreen({super.key});
@@ -8,6 +10,29 @@ class PayScreen extends StatefulWidget {
 }
 
 class _PayScreenState extends State<PayScreen> {
+  List<PaymentItem>? _paymentItems; // Make it nullable
+
+  late final Future<PaymentConfiguration> _googlePayConfigFuture;
+
+  @override
+  void initState() {
+    super.initState();
+    _googlePayConfigFuture =
+        PaymentConfiguration.fromAsset('pay/default_google_pay_config.json');
+  }
+
+
+  void onGooglePayResult(paymentResult) {
+    if (kDebugMode) {
+      print("inside");
+    }
+    debugPrint(paymentResult.toString());
+  }
+
+  void onApplePayResult(paymentResult) {
+    debugPrint(paymentResult.toString());
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -57,7 +82,7 @@ class _PayScreenState extends State<PayScreen> {
                 Container(
                   padding: const EdgeInsets.all(10),
                   width: MediaQuery.sizeOf(context).width * 0.95,
-                  height: MediaQuery.sizeOf(context).height * 0.70,
+                  height: MediaQuery.sizeOf(context).height * 0.85,
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(5),
@@ -217,7 +242,41 @@ class _PayScreenState extends State<PayScreen> {
                           context,
                           'bookdetail', // Pass event ID as an argument
                         );
-                      }, child: const Text("pay Now")))
+                      }, child: const Text("pay Now"))),
+                      SizedBox(height: 10,),
+                      Padding(
+                        padding: const EdgeInsets.all(10),
+                        child: Row(
+                          mainAxisAlignment:
+                          MainAxisAlignment.spaceBetween,
+                          children: [
+                            Expanded(
+                              child: FutureBuilder<PaymentConfiguration>(
+                                  future: _googlePayConfigFuture,
+                                  builder: (context, snapshot) {
+                                    if (snapshot.connectionState == ConnectionState.waiting) {
+                                      return const Center(child: CircularProgressIndicator());
+                                    } else if (snapshot.hasError) {
+                                      return Center(child: Text('Error: ${snapshot.error}'));
+                                    } else {
+                                      final paymentConfiguration = snapshot.data!;
+                                      return GooglePayButton(
+                                        paymentConfiguration: paymentConfiguration,
+                                        paymentItems: _paymentItems ?? [],
+                                        type: GooglePayButtonType.buy,
+                                        margin: const EdgeInsets.only(top: 15.0),
+                                        onPaymentResult: onGooglePayResult,
+                                        loadingIndicator: const Center(
+                                          child: CircularProgressIndicator(),
+                                        ),
+                                      );
+                                    }
+                                  }
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
                     ],
                   ),
                 )
@@ -228,4 +287,5 @@ class _PayScreenState extends State<PayScreen> {
       ),
     );
   }
+
 }

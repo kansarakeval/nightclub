@@ -23,16 +23,18 @@ class _EventsScreenState extends State<EventsScreen> {
     super.initState();
     _loadData();
   }
+
   Future<void> _loadData() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
       uID = prefs.getString('uID') ?? '';
     });
   }
+
   @override
   Widget build(BuildContext context) {
     final lAddress = ModalRoute.of(context)!.settings.arguments as String;
-    _eventDetailsFuture = api.fetchCityevent(lAddress,uID);
+    _eventDetailsFuture = api.fetchCityevent(lAddress, uID);
     return SafeArea(
       child: Scaffold(
         body: Stack(
@@ -88,39 +90,72 @@ class _EventsScreenState extends State<EventsScreen> {
                         return Center(child: Text('Error: ${snapshot.error}'));
                       } else {
                         final List<Cityevent> eventDetailsList = snapshot.data!;
-                        return Expanded(
-                          child: SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.50,
-                            child: ListView.builder(
-                              itemCount: eventDetailsList.length,
-                              itemBuilder: (BuildContext context, int index) {
-                                return Column(
-                                  children: [
-                                    InkWell(
-                                      onTap: () {
-                                        Navigator.pushNamed(
-                                          context,
-                                          'eventdetail',
-                                          arguments: eventDetailsList[index].eId,
-                                        );
-                                      },
-                                      child: HomeEventContainer(
-                                        img: "${Apicall.imgUrl}event/${eventDetailsList[index].ePoster}",
-                                        title: eventDetailsList[index].eName,
-                                        date: '${DateFormat('E, MMM dd').format(DateTime.parse(eventDetailsList[index].eDate))} - ${DateFormat('hh:mm a').format(DateFormat('HH:mm:ss').parse(eventDetailsList[index].eTime))}',
-                                        loc: '${eventDetailsList[index].location},${eventDetailsList[index].lAddress}',
-                                        eid: eventDetailsList[index].eId,
-                                        wis:eventDetailsList[index].in_wishlist,
-                                        api: api,
-                                      ),
-                                    ),
-                                    const SizedBox(height: 20),
-                                  ],
-                                );
-                              },
+                        if (eventDetailsList.isEmpty) {
+                          return Center(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Image.asset(
+                                  "assets/img/No data.gif",
+                                  height: 500,
+                                  width: 500,
+                                ),
+                                const SizedBox(
+                                  height: 20,
+                                ),
+                                const Text(
+                                  "Not Found",
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.black,
+                                  ),
+                                ),
+                                const Text("Sorry,That Area Not Events Found")
+                              ],
                             ),
-                          ),
-                        );
+                          );
+                        } else {
+                          return Expanded(
+                            child: SizedBox(
+                              height: MediaQuery.of(context).size.height * 0.50,
+                              child: ListView.builder(
+                                itemCount: eventDetailsList.length,
+                                itemBuilder: (BuildContext context, int index) {
+                                  return Column(
+                                    children: [
+                                      InkWell(
+                                        onTap: () {
+                                          Navigator.pushNamed(
+                                            context,
+                                            'eventdetail',
+                                            arguments:
+                                                eventDetailsList[index].eId,
+                                          );
+                                        },
+                                        child: HomeEventContainer(
+                                          img:
+                                              "${Apicall.imgUrl}event/${eventDetailsList[index].ePoster}",
+                                          title: eventDetailsList[index].eName,
+                                          date:
+                                              '${DateFormat('E, MMM dd').format(DateTime.parse(eventDetailsList[index].eDate))} - ${DateFormat('hh:mm a').format(DateFormat('HH:mm:ss').parse(eventDetailsList[index].eTime))}',
+                                          loc:
+                                              '${eventDetailsList[index].location},${eventDetailsList[index].lAddress}',
+                                          eid: eventDetailsList[index].eId,
+                                          wis: eventDetailsList[index]
+                                              .in_wishlist,
+                                          api: api,
+                                        ),
+                                      ),
+                                      const SizedBox(height: 20),
+                                    ],
+                                  );
+                                },
+                              ),
+                            ),
+                          );
+                        }
                       }
                     },
                   ),

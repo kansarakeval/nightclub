@@ -1,7 +1,5 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:nightclub/screen/location/provider/location_provider.dart';
-import 'package:provider/provider.dart';
 
 import '../../../models/city.dart';
 import '../../../services/api_call.dart';
@@ -14,8 +12,6 @@ class LocationScreen extends StatefulWidget {
 }
 
 class _LocationScreenState extends State<LocationScreen> {
-  LocationProvider? providerr;
-  LocationProvider? providerw;
   final Apicall api = Apicall();
   List<City> citylist = <City>[];
 
@@ -40,8 +36,6 @@ class _LocationScreenState extends State<LocationScreen> {
 
   @override
   Widget build(BuildContext context) {
-    providerr = context.read<LocationProvider>();
-    providerw = Provider.of<LocationProvider>(context);
     return SafeArea(
       child: Scaffold(
         body: Stack(
@@ -65,9 +59,9 @@ class _LocationScreenState extends State<LocationScreen> {
             SingleChildScrollView(
               child: Column(
                 children: [
-                  const SizedBox(height: 15),
+                  const SizedBox(height: 10),
                   const Text("Search By City",style: TextStyle(fontSize: 25,color: Colors.white),),
-                  const SizedBox(height: 20,),
+                  const SizedBox(height: 10,),
                   Container(
                     margin: const EdgeInsets.all(10),
                     height: MediaQuery.of(context).size.height*0.8,
@@ -82,7 +76,6 @@ class _LocationScreenState extends State<LocationScreen> {
                             children: [
                               Row(
                                 children: [
-                                  // ClipRRect(borderRadius: BorderRadius.circular(5),child: Image.asset("${providerr!.locationList[index].img}",height: 50, width:50,fit: BoxFit.cover,)),
                                   const SizedBox(width: 10,),
                                   InkWell(
                                     onTap: () {

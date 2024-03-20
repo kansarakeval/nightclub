@@ -16,13 +16,6 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
   late Future<List<Eventdetail>> _eventDetailsFuture;
 
   @override
-  void initState() {
-    super.initState();
-    // final eventId = ModalRoute.of(context)!.settings.arguments as String;
-    // _eventDetailsFuture = api.fetchEventDetails(eventId);
-  }
-
-  @override
   Widget build(BuildContext context) {
     final eventId = ModalRoute.of(context)!.settings.arguments as String;
     _eventDetailsFuture = api.fetchEventDetails(eventId);
@@ -55,7 +48,6 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
                   return Center(child: Text('Error: ${snapshot.error}'));
                 } else {
                   final List<Eventdetail> eventDetailsList = snapshot.data!;
-                  // Use eventDetailsList to display event details
                   return SingleChildScrollView(
                     child: Column(
                       children: [
@@ -74,8 +66,9 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
                             const SizedBox(width: 10),
                             const Text(
                               "Event Detail",
-                              style:
-                                  TextStyle(fontSize: 25, color: Colors.white),
+                              style: TextStyle(
+                                  fontSize: 25,
+                                  color: Colors.white),
                             ),
                           ],
                         ),
@@ -119,8 +112,7 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
                               Container(
                                 padding: const EdgeInsets.all(5),
                                 width: MediaQuery.of(context).size.width * 0.84,
-                                height:
-                                    MediaQuery.of(context).size.height * 0.12,
+                                height: 80,
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(10),
                                 ),
@@ -143,14 +135,14 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
                                     Column(
                                       mainAxisSize: MainAxisSize.min,
                                       crossAxisAlignment:
-                                          CrossAxisAlignment.start,
+                                      CrossAxisAlignment.start,
                                       children: [
                                         Text(
                                           DateFormat('EEEE, MMMM dd, yyyy')
                                               .format(DateTime.parse(
-                                                  eventDetailsList[0].eDate)),
+                                              eventDetailsList[0].eDate)),
                                           style: const TextStyle(
-                                              fontSize: 17,
+                                              fontSize: 15,
                                               fontWeight: FontWeight.w500),
                                         ),
                                         Text(
@@ -170,8 +162,7 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
                               Container(
                                 padding: const EdgeInsets.all(5),
                                 width: MediaQuery.of(context).size.width * 0.84,
-                                height:
-                                    MediaQuery.of(context).size.height * 0.15,
+                                height: 80,
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(10),
                                 ),
@@ -192,16 +183,15 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
                                     ),
                                     const SizedBox(width: 10),
                                     Expanded(
-                                      // Expanded widget added to occupy remaining space
                                       child: Column(
                                         mainAxisSize: MainAxisSize.min,
                                         crossAxisAlignment:
-                                            CrossAxisAlignment.start,
+                                        CrossAxisAlignment.start,
                                         children: [
                                           Text(
                                             '${eventDetailsList[0].location},',
                                             style: const TextStyle(
-                                                fontSize: 17,
+                                                fontSize: 15,
                                                 fontWeight: FontWeight.w500),
                                           ),
                                           Text(
@@ -233,7 +223,7 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
                                                 color: Colors.white,
                                               ),
                                               label: const Text("See Location on Maps",
-                                              style: TextStyle(color: Colors.white,fontSize: 12),),
+                                                style: TextStyle(color: Colors.white,fontSize: 12),),
                                               style: ButtonStyle(
                                                 backgroundColor: MaterialStateProperty.all(const Color(0xFF00B79B)),
                                               ),
@@ -242,7 +232,7 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
                                         ],
                                       ),
                                     ),
-                                    const SizedBox(width: 10),
+                                    // const SizedBox(width: 10),
                                   ],
                                 ),
                               ),
@@ -250,8 +240,7 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
                               Container(
                                 padding: const EdgeInsets.all(5),
                                 width: MediaQuery.of(context).size.width * 0.84,
-                                height:
-                                MediaQuery.of(context).size.height * 0.12,
+                                height: 80,
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(10),
                                 ),
@@ -279,7 +268,7 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
                                         Text(
                                           "₹ ${eventDetailsList[0].fPrice}",
                                           style: const TextStyle(
-                                              fontSize: 17,
+                                              fontSize: 15,
                                               fontWeight: FontWeight.w500),
                                         ),
                                         const Text(
@@ -302,6 +291,10 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
                                 ),
                               ),
                               const SizedBox(height: 10),
+                              Text("Category : ${eventDetailsList[0].cName}",
+                              style: const TextStyle(fontWeight: FontWeight.w500),),
+                              Text("Speaker : ${eventDetailsList[0].eSpeaker}",
+                                style: const TextStyle(fontWeight: FontWeight.w500),),
                               Text(eventDetailsList[0].eInfo),
                               const SizedBox(height: 10),
 
@@ -329,16 +322,16 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
                                                     mainAxisSize: MainAxisSize.min,
                                                     children: [
                                                       SizedBox(
-                                                        width: 50, // Set the desired width here
-                                                        child:Divider(
-                                                          color: Colors.grey.shade700, // Darker color
-                                                          height: 2, // Set the height of the divider
-                                                        )
+                                                          width: 50, // Set the desired width here
+                                                          child:Divider(
+                                                            color: Colors.grey.shade700, // Darker color
+                                                            height: 2, // Set the height of the divider
+                                                          )
                                                       ),
                                                       const SizedBox(height: 10),
                                                       const Text(
                                                         'Book Event',
-                                                        style: TextStyle(fontSize: 25.0, fontWeight: FontWeight.w500),
+                                                        style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.w500),
                                                       ),
                                                       const SizedBox(height: 5),
                                                       Divider(color: Colors.grey.shade300,),
@@ -450,7 +443,6 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
                     ),
 
                   );
-
                 }
               },
             ),

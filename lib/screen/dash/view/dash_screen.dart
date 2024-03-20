@@ -7,14 +7,26 @@ import 'package:nightclub/screen/profile/view/profile_screeen.dart';
 import 'package:nightclub/screen/tickets/view/ticket_screen.dart';
 import 'package:provider/provider.dart';
 
-class DashScreen extends StatefulWidget {
+class DashScreen extends StatelessWidget {
   const DashScreen({super.key});
 
   @override
-  State<DashScreen> createState() => _DashScreenState();
+  Widget build(BuildContext context) {
+    return ChangeNotifierProvider<DashProvider>(
+      create: (context) => DashProvider(),
+      child: const DashScreenContent(),
+    );
+  }
 }
 
-class _DashScreenState extends State<DashScreen> {
+class DashScreenContent extends StatefulWidget {
+  const DashScreenContent({super.key});
+
+  @override
+  _DashScreenContentState createState() => _DashScreenContentState();
+}
+
+class _DashScreenContentState extends State<DashScreenContent> {
   List<Widget> screen = [
     const HomeScreen(),
     const LocationScreen(),
@@ -23,44 +35,36 @@ class _DashScreenState extends State<DashScreen> {
     const ProfileScreen(),
   ];
 
-  DashProvider? providerr;
-  DashProvider? providerw;
-
   @override
   Widget build(BuildContext context) {
-    providerr = context.read<DashProvider>();
-    providerw = context.watch<DashProvider>();
+    final DashProvider provider = Provider.of<DashProvider>(context);
+
     return SafeArea(
       child: Scaffold(
         body: PageView(
-          controller: providerr!.pageController,
+          controller: provider.pageController,
           onPageChanged: (value) {
-            providerr!.changeIndedx(value);
+            provider.changeIndex(value);
           },
           children: screen,
         ),
         bottomNavigationBar: NavigationBar(
           indicatorColor: const Color(0xFF00B79B),
-          selectedIndex: providerw!.screenIndex,
+          selectedIndex: provider.screenIndex,
           onDestinationSelected: (value) {
-            providerr!.pageController.animateToPage(value,
-                duration: const Duration(milliseconds: 500),
+            provider.pageController.animateToPage(value,
+                duration: const Duration(milliseconds:500),
                 curve: Curves.easeIn);
-            providerr!.screenIndex = value;
+            provider.changeIndex(value);
           },
           destinations: const [
-            NavigationDestination(
-                icon: Icon(Icons.home_outlined), label: "Home"),
-            NavigationDestination(
-                icon: Icon(Icons.explore_outlined), label: "Explore"),
-            NavigationDestination(
-                icon: Icon(Icons.favorite_border), label: "Favorites"),
-            NavigationDestination(
-                icon: Icon(Icons.confirmation_num_outlined), label: "Tickets"),
-            NavigationDestination(
-                icon: Icon(Icons.perm_identity_rounded), label: "Profile"),
+            NavigationDestination(icon: Icon(Icons.home_outlined), label: "Home"),
+            NavigationDestination(icon: Icon(Icons.explore_outlined), label: "Explore"),
+            NavigationDestination(icon: Icon(Icons.favorite_border), label: "Favorites"),
+            NavigationDestination(icon: Icon(Icons.confirmation_num_outlined), label: "Tickets"),
+            NavigationDestination(icon: Icon(Icons.perm_identity_rounded), label: "Profile"),
           ],
-          animationDuration: const Duration(microseconds: 1000),
+          animationDuration: const Duration(milliseconds: 1000),
         ),
       ),
     );

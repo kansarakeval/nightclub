@@ -18,17 +18,25 @@ class _TicketScreenState extends State<TicketScreen> {
       child: SafeArea(
         child: Scaffold(
           appBar: AppBar(
-            title: const Text(
-              "Tickets",
-              style: TextStyle(fontSize: 25, color: Colors.white,),
+            title: const Column(
+              children: [
+                SizedBox(height: 10,),
+                Text(
+                  "Tickets",
+                  style: TextStyle(
+                    fontSize: 25,
+                    color: Colors.white,
+                  ),
+                ),
+
+              ],
             ),
             centerTitle: true,
             backgroundColor: const Color(0xFF00B79B),
-            bottom:  const TabBar(
+            bottom: const TabBar(
               labelColor: Colors.white,
               unselectedLabelColor: Colors.white,
               indicatorColor: Colors.white,
-
               tabs: [
                 Tab(
                   text: "Upcoming",
@@ -43,13 +51,13 @@ class _TicketScreenState extends State<TicketScreen> {
             ),
           ),
           backgroundColor: Colors.white,
-          body:   const TabBarView(
-              children: [
-                UpcomingScreen(),
-                CompletedScreen(),
-                CancelledScreen(),
-              ]
-          ),
+          body: const TabBarView(children: [
+            UpcomingScreen(),
+
+            CompletedScreen(),
+
+            CancelledScreen(),
+          ]),
         ),
       ),
     );

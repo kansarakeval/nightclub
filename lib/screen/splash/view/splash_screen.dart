@@ -11,7 +11,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     Future.delayed(
-      const Duration(seconds: 10),
+      const Duration(seconds: 5),
       () {
         Navigator.pushReplacementNamed(context, 'login');
       },
@@ -23,7 +23,7 @@ class _SplashScreenState extends State<SplashScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.asset(
-                'assets/img/logo.png',
+                'assets/img/logo3.gif',
                 width: MediaQuery.sizeOf(context).width*0.90,
                 height: MediaQuery.sizeOf(context).height*0.90,
               ),

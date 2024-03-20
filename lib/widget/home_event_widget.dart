@@ -71,8 +71,6 @@ class _HomeEventContainerState extends State<HomeEventContainer> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: MediaQuery.of(context).size.width * 0.90,
-      height: MediaQuery.of(context).size.height * 0.54,
       padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
         color: Colors.white,
@@ -100,7 +98,6 @@ class _HomeEventContainerState extends State<HomeEventContainer> {
                     fit: BoxFit.cover,
                   ),
                 ),
-
               ],
             ),
           ),
@@ -126,17 +123,21 @@ class _HomeEventContainerState extends State<HomeEventContainer> {
           const SizedBox(height: 10),
           Row(
             children: [
-              Icon(
+              const Icon(
                 Icons.location_on_rounded,
                 size: 25,
                 color: Color(0xFF00B79B),
               ),
-              SizedBox(width: 5),
-              Text(
-                widget.loc ?? "",
-                style: const TextStyle(fontSize: 17, color: Color(0x7100B79B)),
+              const SizedBox(width: 5),
+              Flexible( // Wrap the Text with Flexible
+                child: Text(
+                  widget.loc ?? "",
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: const TextStyle(fontSize: 17, color: Color(0x7100B79B)),
+                ),
               ),
-              Spacer(),
+              const Spacer(),
               IconButton(
                 onPressed: isLoading ? null : () => _addToWishlist(),
                 icon: isFavorite
@@ -151,6 +152,7 @@ class _HomeEventContainerState extends State<HomeEventContainer> {
               ),
             ],
           ),
+
         ],
       ),
     );

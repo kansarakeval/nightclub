@@ -17,6 +17,7 @@ class _LoginScreenState extends State<LoginScreen> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   String _errorText = '';
+  bool _isObscure = true;
 
   @override
   void initState() {
@@ -80,13 +81,19 @@ class _LoginScreenState extends State<LoginScreen> {
                   const SizedBox(height: 10),
                   TextField(
                     controller: _passwordController,
-                    keyboardType: TextInputType.visiblePassword,
-                    obscureText: true,
-                    decoration: const InputDecoration(
-                      border: OutlineInputBorder(),
-                      prefixIcon: Icon(Icons.password),
+                    obscureText: _isObscure,
+                    decoration: InputDecoration(
+                      border: const OutlineInputBorder(),
+                      prefixIcon: const Icon(Icons.password),
                       hintText: "Password",
-                      suffixIcon: Icon(Icons.remove_red_eye),
+                      suffixIcon: IconButton(
+                        icon: Icon( _isObscure ? Icons.visibility : Icons.visibility_off),
+                        onPressed: () {
+                          setState(() {
+                            _isObscure = !_isObscure;
+                          });
+                        },
+                      ),
                     ),
                   ),
                   const SizedBox(height: 20),
@@ -119,8 +126,6 @@ class _LoginScreenState extends State<LoginScreen> {
                         ))
                             .then((res) async {
                           if (res == "1") {
-                            final prefs = await SharedPreferences.getInstance();
-                            await prefs.setString("email", email);
                             Navigator.pushReplacementNamed(context, 'dash');
                           } else {
                             setState(() {

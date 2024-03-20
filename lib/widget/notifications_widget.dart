@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 
 class NotificationWidget extends StatelessWidget {
-  String? title,des;
-  IconData? icon;
-   NotificationWidget({super.key,required this.icon,required this.title,required this.des});
+  final String? title;
+  final String? des;
+
+  const NotificationWidget({
+    Key? key,
+    required this.title,
+    required this.des,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -12,17 +17,22 @@ class NotificationWidget extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Icon(icon ?? Icons.account_circle_outlined),
-          const SizedBox(width: 10,),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(title ?? " ",style: const TextStyle(fontSize: 20),),
-              Text(des ?? "",style: TextStyle(color: Colors.grey.shade400),),
-            ],
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  title ?? " ",
+                  style: const TextStyle(fontSize: 20),
+                ),
+                Text(
+                  des ?? "",
+                  softWrap: true,
+                  style: const TextStyle(color: Colors.grey),
+                ),
+              ],
+            ),
           ),
-          const Spacer(),
-          const Text("1 day")
         ],
       ),
     );
